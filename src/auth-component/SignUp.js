@@ -24,6 +24,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
+const react_router_dom_1 = require("react-router-dom");
 const react_bootstrap_1 = require("react-bootstrap");
 const SignUp = ({ setToken }) => {
     // Define state variables for the email and password
@@ -62,7 +63,11 @@ const SignUp = ({ setToken }) => {
                     react_1.default.createElement(react_bootstrap_1.Form.Group, { controlId: "formConfirmPassword" },
                         react_1.default.createElement(react_bootstrap_1.Form.Label, null, "Confirm Password"),
                         react_1.default.createElement(react_bootstrap_1.FormControl, { type: "password", value: password2, onChange: (event) => setPassword2(event.target.value) })),
-                    react_1.default.createElement(react_bootstrap_1.Button, { type: "submit" }, "Sign Up"))))));
+                    react_1.default.createElement(react_bootstrap_1.Button, { type: "submit" }, "Sign Up")))),
+        react_1.default.createElement("div", null,
+            react_1.default.createElement("p", null,
+                "Already have an account? ",
+                react_1.default.createElement(react_router_dom_1.Link, { to: "/login" }, "Login")))));
 };
 exports.default = SignUp;
 //# sourceMappingURL=SignUp.js.map

@@ -28,6 +28,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const SignUp_1 = __importDefault(require("./auth-component/SignUp"));
 const react_1 = __importStar(require("react"));
+const react_router_dom_1 = require("react-router-dom");
+const Login_1 = __importDefault(require("./auth-component/Login"));
 const jwt = require('jsonwebtoken');
 const App = () => {
     // Define state variable for the JWT
@@ -35,7 +37,12 @@ const App = () => {
     // Decode the JWT to get the user ID
     const userId = token ? jwt.verify(token, 'secret_key').userId : null;
     return (react_1.default.createElement("div", null,
-        !userId && react_1.default.createElement(SignUp_1.default, { setToken: setToken }),
+        react_1.default.createElement(react_router_dom_1.Routes, null,
+            !userId ? react_1.default.createElement(react_router_dom_1.Route, { path: "/", element: react_1.default.createElement(SignUp_1.default, { setToken: setToken }) }) : react_1.default.createElement("p", null,
+                "Welcome, user with ID: ",
+                userId),
+            react_1.default.createElement(react_router_dom_1.Route, { path: "/login", element: react_1.default.createElement(Login_1.default, { setToken: setToken }) })),
+        !userId,
         userId && react_1.default.createElement("p", null,
             "Welcome, user with ID: ",
             userId)));

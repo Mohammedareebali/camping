@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Link} from 'react-router-dom'
 import { Form, FormControl, Button, Container, Row, Col } from 'react-bootstrap';
 
 interface Props{
@@ -66,6 +67,9 @@ const SignUp: React.FC<Props> = ({setToken}) => {
           </Form>
         </Col>
       </Row>
+      <div>
+      <p>Already have an account? <Link to="/login">Login</Link></p>
+    </div>
     </Container>
   );
 };
