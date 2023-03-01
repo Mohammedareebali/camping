@@ -1,0 +1,198 @@
+a{
+  text-decoration: none;
+}
+.containers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  
+  
+  .login-form {
+    flex: 1 1 60%;
+    padding: 2% 10%;
+    height: 100vh;
+  }
+  
+  .login-form .forms h1 {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  
+  .login-form .forms form {
+    /*max-width: 460px;*/
+    
+  }
+  
+  .login-form .forms p {
+    margin-top: 20px;
+  }
+  .login-form section .logo-text{
+    height: 5%;
+  }
+  .testimonial {
+    flex: 1 1 40%;
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+  }
+  
+  .testimonial h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding: 2px 70px;
+    text-align: left;
+  }
+  
+  .testimonial p {
+    font-style: italic;
+    margin-bottom: 0;
+  }
+  html,
+  body {
+    height: 100%;
+  
+  }
+  
+  .containers {
+    min-height: 100vh;
+    box-sizing: border-box;
+
+  }
+    .forms{
+        height: 95%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .forms h2{
+        padding-bottom: 20px;
+    }
+    form div {
+padding-bottom: 20px;
+    }
+    form button{
+        width: 100%;
+        background-color: black!important;
+        border-color: black!important;
+    }
+    .login-form input {
+        background-color: #f9f9f9!important;
+        padding: 10px;
+      }
+      .login-form input:focus {
+        background-color: #f9f9f9!important;
+      }
+      .btn{
+        padding: 10px;
+      
+        border-radius: 6px;
+      }
+      .logo-text{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .logo-text .back {
+        color: #464646;
+      }
+      .back {
+        cursor: pointer;
+      }
+      
+      .logo-text:hover .back {
+        color: black;
+        transition: color 0.25s ease-in;
+      }
+      
+      .logo-text .fa-arrow-left{
+        transition: color 0.55s ease-in, transform 0.25s ease-in;
+      }
+      .logo-text:hover .fa-arrow-left {
+        transform: translateX(-10px);
+      }
+      
+      .img{
+        width: 40px;
+    border-radius: 50px;
+    height: 40px;
+      }
+      .row{
+        align-items: center;
+      }
+      .column{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .profession{
+        color: #464646;
+      }
+      .card{
+        padding-left: 60px;
+        background-color: #f9f9f9;
+        border:none;
+
+      }
+      @media (max-width:950px) {
+        .containers{
+          height: 1000px;
+          display: flex;
+          flex-direction: column;
+        }
+        .card{
+          display: flex;
+          align-items: flex-start;
+        }
+        .column{
+          padding-left: 6%;
+        }
+        .testimonial h3{
+          padding-right: 10px;
+        }
+        .testimonial{
+        
+        }
+        .row{
+          flex-wrap: nowrap;
+        }
+        .col-md-2{
+          width: fit-content;
+        }
+      
+      }
+      @media (max-width:390px){
+      
+        html, body {
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          overflow-x: hidden;
+        }
+        
+        .testimonial h3,.card{
+          padding: 0;
+        }
+        
+        .login-form{
+          flex: 1 1 50%;
+        }
+        .testimonial{
+          flex: 1 1 10%;
+        }
+      }
+      /*landing page*/
+      .campImg{
+        background-image: url('../pics/camp.png');
+        background-size:     cover;                     
+    background-repeat:   no-repeat;
+    background-position: center center; 
+      }

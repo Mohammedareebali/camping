@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
-import axios from 'axios';
-
+import { useNavigate,Link } from 'react-router-dom';
+import { Form, Button, Alert,Card,Row,Col } from 'react-bootstrap';
+import '../auth-css/login.css'
+const img = require('../pics/icon-small.png');
+const authorImg = require('../pics/a.png');
 interface Props {
   setToken: (token: string) => void;
 }
@@ -10,19 +12,45 @@ const Login: React.FC<Props> = ({ setToken }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/login', { email, password });
-      setToken(response.data.token);
+      const response = await fetch('http://localhost:5000/login', {
+  method: 'POST',
+  headers: {'Content-Type': 'application/json'},
+  body: JSON.stringify({ email, password })
+});
+
+if (response.ok) {
+  const data = await response.json();
+  setToken(data.token);
+  navigate('/home')
+} else {
+  const errorData = await response.json();
+  setError('Incorrect email or password');
+}
+
     } catch (err) {
       setError('Incorrect email or password');
+    console.log(err)
     }
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <>
+   <div className="containers">
+      <section className="login-form">
+        <div className='logo-text'>
+         <p><b> <img src={img} alt = 'this'></img>yelpCamp</b></p>
+         <Link to="/main">
+         <p className='back'><i className="fas fa-arrow-left"></i> Back</p>
+          </Link> 
+          </div>
+        <div className="forms">
+        <h2><b>Start exploring camps from all over around the world</b></h2>
+        <Form onSubmit={handleSubmit}>
       {error && <Alert variant="danger">{error}</Alert>}
       <Form.Group controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
@@ -46,6 +74,31 @@ const Login: React.FC<Props> = ({ setToken }) => {
         Login
       </Button>
     </Form>
+    <p>Not a user yet? <Link to="/signup">Create an account</Link></p>
+     </div>
+      </section>
+      <section className="testimonial">
+        <h3>"YelpCamp has honestly saved me hours of research time, and the camps on here are definitely well picked and added"</h3>
+       
+        <Card>
+      <Row>
+        <Col md={2}>
+          <div className="imag">
+            <img className='img' src={authorImg} alt='that'></img>
+          </div>
+        </Col>
+        <Col md={10}>
+          <div className='column'>
+            <p className="name"><b>Mohammed Areeb Ali</b></p>
+            <p className='profession'>Professional hiker</p>
+          </div>
+        </Col>
+      </Row>
+    </Card>
+      </section>
+    </div>
+    </>
+
   );
 };
 
