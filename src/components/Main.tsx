@@ -1,42 +1,58 @@
 import React from 'react'
-import { useNavigate,Link } from 'react-router-dom';
-import { Button, Alert,Card,Row,Col } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+
+
 const img = require('../pics/icon-small.png');
-const camp = require('../pics/camp.png');
+const checkmark = require('../pics/checkmark.svg').default;
+const booking = require('../pics/Booking.svg').default;
+const airbnb = require('../pics/Airbnb.svg').default;
+const plumguide = require('../pics/Plumguide.svg').default;
+
 export default function Main() {
   return (
-    <div className="containers">
-    <section className="login-form">
-      <div className='logo-text'>
-       <p><b> <img src={img} alt = 'this'></img>yelpCamp</b></p>
-       
-        </div>
-      <div className="forms">
-      <h2><b>Explore the best camps on Earth.</b></h2>
-      <p>YelpCamp is a curated list of the best camping spots on Earth. unfiltered and unbiased reviews.</p>
-<div className='list'>
-  <ul>
-  <li>Add your own camp suggestions.</li>
-  <li>Leave reviews and experineces</li>
-  <li>See locations for all camps</li>
-  </ul></div>   
-  <div className='view'>
-  <Button variant="primary" type="submit">
-        View Campgrounds
-      </Button>
-      </div> 
-      <div className="partners">
-        <p><b>Partnered with:</b></p>
-        <div className='partner-logo'>
-          </div>
-          </div>  
-  <p>Not a user yet? <Link to="/signup">Create an account</Link></p>
-   </div>
-    </section>
-    <section className="testimonial campImg">
-     
+    <div className="containers mainContainer">
       
-    </section>
-  </div>
+      <section className="login-form mainlogin">
+        <div className='logo-text mainlogo'>
+          <p><b> <img src={img} alt='YelpCamp logo' />yelpCamp</b></p>
+        </div>
+        
+        <div className="forms mainform">
+          <h1><b>Explore the best camps on Earth.</b></h1>
+          <p>YelpCamp is a curated list of the best camping spots on Earth. unfiltered and unbiased reviews.</p>
+          
+          <div className='list'>
+            <ul>
+              <li><img src={checkmark} alt='checkmark' />Add your own camp suggestions.</li>
+              <li><img src={checkmark} alt='checkmark' />Leave reviews and experiences</li>
+              <li><img src={checkmark} alt='checkmark' />See locations for all camps</li>
+            </ul>
+          </div>   
+          
+          <div className='view'>
+            <Button variant='dark' className='color' >
+              View Campgrounds
+            </Button>
+          </div> 
+          
+          <div className="partners">
+            <p><b>Partnered with:</b></p>
+            <div className='partner-logo'>
+              <img src={booking} alt='booking' />
+              <img src={airbnb} alt='airbnb' />
+              <img src={plumguide} alt='plumguide' />
+            </div>
+          </div>  
+        </div>
+      </section>
+      
+      <section className="testimonial campImg">
+      </section>
+      
+      <section className='logo-text n'>
+        <p><b> <img src={img} alt='YelpCamp logo' />yelpCamp</b></p>
+      </section>
+      
+    </div>
   )
 }

@@ -81,7 +81,7 @@ const Login = ({ setToken }) => {
                         react_1.default.createElement(react_bootstrap_1.Form.Group, { controlId: "formBasicPassword" },
                             react_1.default.createElement(react_bootstrap_1.Form.Label, null, "Password"),
                             react_1.default.createElement(react_bootstrap_1.Form.Control, { type: "password", placeholder: "Password", value: password, onChange: e => setPassword(e.target.value) })),
-                        react_1.default.createElement(react_bootstrap_1.Button, { variant: "primary", type: "submit" }, "Login")),
+                        react_1.default.createElement(react_bootstrap_1.Button, { variant: "dark", type: "submit" }, "Login")),
                     react_1.default.createElement("p", null,
                         "Not a user yet? ",
                         react_1.default.createElement(react_router_dom_1.Link, { to: "/signup" }, "Create an account")))),
