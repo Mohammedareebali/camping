@@ -321,12 +321,18 @@ padding: revert;
   padding-right: 2%;
   
 }
-
+.container{
+  padding: 0;
+}
 .card-deck .card {
   width: calc(33.33% - 10px);
   flex-grow: 1;
   padding-left: 0;
-  max-width: 350px;
+  max-width: 30%;
+}
+.card-deck{
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .card-img-top {

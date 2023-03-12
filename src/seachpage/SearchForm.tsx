@@ -3,12 +3,13 @@ import { Container, Form, Button } from "react-bootstrap";
 import SearchResult from "./SearchResult";
 
 const SearchComponent: React.FC = () => {
-  const [query, setQuery] = useState("");
+
   const [searchResults, setSearchResults] = useState([]);
 
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
-    
     e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const query = formData.get("query") as string;
     try{
     const response = await fetch(`/search?q=${query}`, {
         method: 'GET',
@@ -23,8 +24,9 @@ const SearchComponent: React.FC = () => {
         console.log(`message:${error}`);
     }
   };
-
+  
   return (
+   
     <>
     <Container className="bg-light p-4">
       <h2>Welcome to YelpCamp</h2>
@@ -34,8 +36,8 @@ const SearchComponent: React.FC = () => {
           type="text"
           placeholder="Search campgrounds..."
           className="me-2"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          name = 'query'
+        
         />
         <Button variant="dark" type="submit">
           Search
@@ -47,7 +49,7 @@ const SearchComponent: React.FC = () => {
         </a>
       </p>
     </Container>
-    <SearchResult searchResults={searchResults}/>
+    <SearchResult searchResults={searchResults} />
     </>
   );
 };
