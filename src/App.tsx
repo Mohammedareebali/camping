@@ -6,6 +6,7 @@ import { Route, Routes,useNavigate } from 'react-router-dom';
 
 import { jwtVerify } from 'jose';
 import Main from './components/Main';
+import  Searchpage  from './seachpage/searchpage' ;
 
 const App: React.FC = () => {
   // Define state variable for the JWT
@@ -59,6 +60,7 @@ const navigate = useNavigate();
           <Route path="/signup" element={<SignUp setToken={setToken} />} />
         <Route path="/login" element={<Login setToken={setToken} />} />
         <Route path="/main" element = {<Main/>}/>
+        <Route path='/search' element = {<Searchpage/>}/>
 </>
         ) : (
           <Route path='/home' element={<Home token = {token} setUserId = {setUserId} userId = {userId} setToken = {setToken} />} />

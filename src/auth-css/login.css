@@ -307,3 +307,30 @@ ul {
   }
   
 }
+/* searchpage.css */
+.navbar .container .btn{
+padding: revert;
+}
+.card-deck {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 15px;
+  padding-top: 50px;
+  padding-left: 2%;
+  padding-right: 2%;
+  
+}
+
+.card-deck .card {
+  width: calc(33.33% - 10px);
+  flex-grow: 1;
+  padding-left: 0;
+  max-width: 350px;
+}
+
+.card-img-top {
+  object-fit: cover;
+  height: 200px;
+}
+
