@@ -5,7 +5,7 @@ const img = require('../pics/icon-small.png');
 
 const NavComponent: React.FC = () => {
   return (
-    <Navbar bg="white" variant="light" expand="lg" sticky="top">
+    <Navbar  bg="white" variant="light" expand="lg" sticky="top">
       <Container>
         <Navbar.Brand>
           <Link to="/" className="navbar-brand">

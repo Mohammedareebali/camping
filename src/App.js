@@ -34,6 +34,7 @@ const react_router_dom_1 = require("react-router-dom");
 const jose_1 = require("jose");
 const Main_1 = __importDefault(require("./components/Main"));
 const searchpage_1 = __importDefault(require("./seachpage/searchpage"));
+const CampgroundDetails_1 = __importDefault(require("./seachpage/CampgroundDetails"));
 const App = () => {
     // Define state variable for the JWT
     // Retrieve the JWT from localStorage
@@ -83,7 +84,8 @@ const App = () => {
             react_1.default.createElement(react_router_dom_1.Route, { path: "/signup", element: react_1.default.createElement(SignUp_1.default, { setToken: setToken }) }),
             react_1.default.createElement(react_router_dom_1.Route, { path: "/login", element: react_1.default.createElement(Login_1.default, { setToken: setToken }) }),
             react_1.default.createElement(react_router_dom_1.Route, { path: "/main", element: react_1.default.createElement(Main_1.default, null) }),
-            react_1.default.createElement(react_router_dom_1.Route, { path: '/search', element: react_1.default.createElement(searchpage_1.default, null) }))) : (react_1.default.createElement(react_router_dom_1.Route, { path: '/home', element: react_1.default.createElement(Home_1.default, { token: token, setUserId: setUserId, userId: userId, setToken: setToken }) })))));
+            react_1.default.createElement(react_router_dom_1.Route, { path: '/search/*', element: react_1.default.createElement(searchpage_1.default, null) }),
+            react_1.default.createElement(react_router_dom_1.Route, { path: "/campgrounds/:campgroundId", element: react_1.default.createElement(CampgroundDetails_1.default, null) }))) : (react_1.default.createElement(react_router_dom_1.Route, { path: '/home', element: react_1.default.createElement(Home_1.default, { token: token, setUserId: setUserId, userId: userId, setToken: setToken }) })))));
 };
 exports.default = App;
 //# sourceMappingURL=App.js.map

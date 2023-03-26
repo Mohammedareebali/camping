@@ -29,35 +29,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const react_bootstrap_1 = require("react-bootstrap");
 const SearchResult_1 = __importDefault(require("./SearchResult"));
-const SearchComponent = () => {
-    const [searchResults, setSearchResults] = (0, react_1.useState)([]);
-    const handleSearch = async (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.currentTarget);
-        const query = formData.get("query");
-        try {
-            const response = await fetch(`/search?q=${query}`, {
-                method: 'GET',
-                headers: { 'Content-Type': 'application/json' },
-            });
-            const data = await response.json();
-            // handle the data
-            setSearchResults(data);
-        }
-        catch (error) {
-            console.log(`message:${error}`);
-        }
+const SearchComponent = ({ handleSearch, campgrounds }) => {
+    const [searchQuery, setSearchQuery] = (0, react_1.useState)("");
+    const handleClear = () => {
+        setSearchQuery("");
     };
     return (react_1.default.createElement(react_1.default.Fragment, null,
-        react_1.default.createElement(react_bootstrap_1.Container, { className: "bg-light p-4" },
-            react_1.default.createElement("h2", null, "Welcome to YelpCamp"),
-            react_1.default.createElement("p", null, "View our handpicked campgrounds from all over the world, or add your own."),
+        react_1.default.createElement(react_bootstrap_1.Container, { className: " p-4" },
             react_1.default.createElement(react_bootstrap_1.Form, { onSubmit: handleSearch, className: "d-flex" },
-                react_1.default.createElement(react_bootstrap_1.Form.Control, { type: "text", placeholder: "Search campgrounds...", className: "me-2", name: 'query' }),
-                react_1.default.createElement(react_bootstrap_1.Button, { variant: "dark", type: "submit" }, "Search")),
-            react_1.default.createElement("p", { className: "mt-3" },
-                react_1.default.createElement("a", { href: "/new", className: "text-decoration-none" }, "Add your own campground"))),
-        react_1.default.createElement(SearchResult_1.default, { searchResults: searchResults })));
+                react_1.default.createElement(react_bootstrap_1.Form.Control, { type: "text", placeholder: 'search', className: "me-2", name: 'query', value: searchQuery, onChange: (e) => setSearchQuery(e.target.value) }),
+                react_1.default.createElement(react_bootstrap_1.Button, { variant: "light", type: "button", className: "me-2 clear-btn", onClick: handleClear }, "Clear"),
+                react_1.default.createElement(react_bootstrap_1.Button, { variant: "dark", type: "submit", className: "search-btn" }, "Search"))),
+        react_1.default.createElement(SearchResult_1.default, { campgrounds: campgrounds })));
 };
 exports.default = SearchComponent;
 //# sourceMappingURL=SearchForm.js.map

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
 const img = require('../pics/icon-small.png');
@@ -31,7 +32,9 @@ export default function Main() {
           
           <div className='view'>
             <Button variant='dark' className='color' >
+              <Link to='/search'>
               View Campgrounds
+              </Link>
             </Button>
           </div> 
           

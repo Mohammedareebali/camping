@@ -1,55 +1,42 @@
 import React, { useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
+
 import SearchResult from "./SearchResult";
+interface SearchProps {
+  handleSearch : any;
+  campgrounds: any;
+}
 
-const SearchComponent: React.FC = () => {
+const SearchComponent: React.FC<SearchProps> = ({handleSearch,campgrounds}) => {
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const [searchResults, setSearchResults] = useState([]);
-
-  const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const query = formData.get("query") as string;
-    try{
-    const response = await fetch(`/search?q=${query}`, {
-        method: 'GET',
-        headers: {'Content-Type': 'application/json'},});
-    const data = await response.json();
-    // handle the data
-    
-    setSearchResults(data);
-
-    }
-    catch(error){
-        console.log(`message:${error}`);
-    }
+  const handleClear = () => {
+    setSearchQuery("");
   };
-  
   return (
    
     <>
-    <Container className="bg-light p-4">
-      <h2>Welcome to YelpCamp</h2>
-      <p>View our handpicked campgrounds from all over the world, or add your own.</p>
-      <Form onSubmit={handleSearch} className="d-flex">
+    <Container className=" p-4">
+     <Form onSubmit={handleSearch} className="d-flex">
+
         <Form.Control
           type="text"
-          placeholder="Search campgrounds..."
+          placeholder='search'
           className="me-2"
           name = 'query'
-        
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <Button variant="dark" type="submit">
-          Search
-        </Button>
+        <Button variant="light" type="button" className="me-2 clear-btn" onClick={handleClear}>
+            Clear
+          </Button>
+          <Button variant="dark" type="submit" className="search-btn">
+            Search
+          </Button>
       </Form>
-      <p className="mt-3">
-        <a href="/new" className="text-decoration-none">
-          Add your own campground
-        </a>
-      </p>
+     
     </Container>
-    <SearchResult searchResults={searchResults} />
+    <SearchResult campgrounds={campgrounds} />
     </>
   );
 };

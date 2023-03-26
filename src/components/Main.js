@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const react_bootstrap_1 = require("react-bootstrap");
+const react_router_dom_1 = require("react-router-dom");
 const img = require('../pics/icon-small.png');
 const checkmark = require('../pics/checkmark.svg').default;
 const booking = require('../pics/Booking.svg').default;
@@ -35,7 +36,8 @@ function Main() {
                             react_1.default.createElement("img", { src: checkmark, alt: 'checkmark' }),
                             "See locations for all camps"))),
                 react_1.default.createElement("div", { className: 'view' },
-                    react_1.default.createElement(react_bootstrap_1.Button, { variant: 'dark', className: 'color' }, "View Campgrounds")),
+                    react_1.default.createElement(react_bootstrap_1.Button, { variant: 'dark', className: 'color' },
+                        react_1.default.createElement(react_router_dom_1.Link, { to: '/search' }, "View Campgrounds"))),
                 react_1.default.createElement("div", { className: "partners" },
                     react_1.default.createElement("p", null,
                         react_1.default.createElement("b", null, "Partnered with:")),
