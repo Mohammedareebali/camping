@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate,Link } from 'react-router-dom';
 import { Form, Button, Alert,Card,Row,Col } from 'react-bootstrap';
-import '../auth-css/login.css'
+import '../auth-css/login.css';
 const img = require('../pics/icon-small.png');
 const authorImg = require('../pics/a.png');
 interface Props {
@@ -26,7 +26,7 @@ const Login: React.FC<Props> = ({ setToken }) => {
 if (response.ok) {
   const data = await response.json();
   setToken(data.token);
-  navigate('/home')
+  navigate('/home');
 } else {
   const errorData = await response.json();
   setError('Incorrect email or password');

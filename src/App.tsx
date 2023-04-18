@@ -8,6 +8,8 @@ import { jwtVerify } from 'jose';
 import Main from './components/Main';
 import  Searchpage  from './seachpage/searchpage' ;
 import CampgroundDetails from './seachpage/CampgroundDetails';
+import NewCampForm from './newcamp/NewCampForm';
+import PrivateRoute from './privateroute/PrivateRoute';
 
 const App: React.FC = () => {
   // Define state variable for the JWT
@@ -15,6 +17,7 @@ const App: React.FC = () => {
  const [token, setToken] = useState<string | null>(() => {
   const storedToken = localStorage.getItem('jwt');
   if (storedToken) {
+    console.log(storedToken)
     return storedToken;
   }
   return null;
@@ -33,9 +36,11 @@ const navigate = useNavigate();
         console.log(payload);
         setUserId(payload.id);
       }
+      
     } catch (err) {
-      console.error(err);
-      setUserId(null);
+      
+      setUserId(null)
+      setToken(null);
     }
   };
 
@@ -44,8 +49,11 @@ const navigate = useNavigate();
     // Store the JWT in localStorage whenever it changes
     if (token) {
       localStorage.setItem('jwt', token);
+      localStorage.setItem('isAuthenticated', 'true');
+      
     } else {
       localStorage.removeItem('jwt');
+      localStorage.removeItem('isAuthenticated')
     }
   }, [token]);
   useEffect(() => {
@@ -56,24 +64,23 @@ const navigate = useNavigate();
   return (
     <>
       <Routes>
-        {!userId ? (
-          <>
+        
+          
           <Route path="/signup" element={<SignUp setToken={setToken} />} />
         <Route path="/login" element={<Login setToken={setToken} />} />
         <Route path="/main" element = {<Main/>}/>
         <Route path='/search/*' element = {<Searchpage/>}/>
-        <Route path="/campgrounds/:campgroundId" element={<CampgroundDetails />} />
+        <Route path="/campgrounds/:campgroundId" element={<CampgroundDetails token = {token}/>} />
 
-</>
-        ) : (
-          <Route path='/home' element={<Home token = {token} setUserId = {setUserId} userId = {userId} setToken = {setToken} />} />
-          
-        )}
+
+          <Route path='/createcamp' element = {<PrivateRoute>
+            <NewCampForm token = {token}/></PrivateRoute>}  />
+      
       </Routes>
       
       
     </>
-  );
-};
+  
+  )};
 
 export default App;

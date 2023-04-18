@@ -68,14 +68,15 @@ console.log('hi')
         mapboxAccessToken={'pk.eyJ1IjoibW9oYW1tZWQtYXJlZWIiLCJhIjoiY2t6ZDdpcG1rMDQyODJwcGMwOGZvZDVveCJ9.VtXqwPfArJoSqOLzFAfu1g' || ''}
       >
         
-        {campgrounds.map((camp) => (
+        {campgrounds.map((camp,index) => (
           <Marker
-            key={camp._id}
+          key={`${camp._id}-${index}`} // Append index to the key
+
             latitude={camp.coordinates[1]}
             longitude={camp.coordinates[0]}
           >
           
-              <FaMapMarkerAlt size={30} color={'#3f51b5'}  onClick={(e) => {
+              <FaMapMarkerAlt size={30} color={'#3f51b5'}  onClick={(e: { preventDefault: () => void; }) => {
                 e.preventDefault();
                 setSelectedCamp(camp);}}/>
           

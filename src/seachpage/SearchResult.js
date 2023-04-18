@@ -10,12 +10,12 @@ const fa_1 = require("react-icons/fa");
 const SearchResult = ({ campgrounds }) => {
     const history = (0, react_router_dom_1.useNavigate)();
     const result = campgrounds;
+    console.log(result);
     const handleViewCampground = (campgroundId) => {
         history(`/campgrounds/${campgroundId}`);
     };
-    console.log(campgrounds);
     return (react_1.default.createElement(react_bootstrap_1.Container, { className: "scroll" },
-        react_1.default.createElement("div", { className: "cards-container" }, result.map((campground) => (react_1.default.createElement("div", { className: "card", key: campground._id, onClick: () => handleViewCampground(campground._id) },
+        react_1.default.createElement("div", { className: "cards-container" }, result.map((campground, index) => (react_1.default.createElement("div", { className: "card", key: `campground-${campground._id}-${index}`, onClick: () => handleViewCampground(campground._id) },
             react_1.default.createElement("div", { className: "card-image" },
                 react_1.default.createElement("img", { src: campground.imageUrl, alt: "Campground" })),
             react_1.default.createElement("div", { className: "card-content" },

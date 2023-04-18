@@ -34,17 +34,22 @@ function Searchpage() {
     const [loading, setLoading] = (0, react_1.useState)(true);
     const [campgrounds, setCampgrounds] = (0, react_1.useState)([]);
     const [currentPage, setCurrentPage] = (0, react_1.useState)(1);
+    const [noResultsMessage, setNoResultsMessage] = (0, react_1.useState)('');
+    const [searchQuery, setSearchQuery] = (0, react_1.useState)('');
     const [hasMore, setHasMore] = (0, react_1.useState)(true);
     (0, react_1.useEffect)(() => {
         const fetchCampgrounds = async () => {
             try {
-                const response = await fetch(`/campgrounds?page=${currentPage}`);
+                const url = searchQuery
+                    ? `/search?q=${searchQuery}&page=${currentPage}`
+                    : `/campgrounds?page=${currentPage}`;
+                const response = await fetch(url);
                 const data = await response.json();
                 // Check if there are more results
                 console.log(data);
                 if (data.current == data.pages) {
-                    setHasMore(false);
                     setCampgrounds(prevCampgrounds => [...prevCampgrounds, ...data.campgrounds]);
+                    setHasMore(false);
                 }
                 else {
                     setCampgrounds(prevCampgrounds => [...prevCampgrounds, ...data.campgrounds]);
@@ -56,28 +61,42 @@ function Searchpage() {
             }
         };
         fetchCampgrounds();
-    }, [currentPage]);
+    }, [currentPage, searchQuery]);
     const handleSearch = async (e) => {
         e.preventDefault();
+        setLoading(true); // Set loading to true before the search
         const formData = new FormData(e.currentTarget);
         const query = formData.get('query');
+        setSearchQuery(query);
+        setCurrentPage(1); // Reset the current page to 1
+        setCampgrounds([]); // Clear the campgrounds state
         try {
-            const response = await fetch(`/search?q=${query}&page=${currentPage}`, {
+            const response = await fetch(`/search?q=${query}&page=1`, {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
             });
             const data = await response.json();
+            console.log(data);
+            if (data.campgrounds.length === 0) {
+                setNoResultsMessage('No results found for your search query.');
+            }
+            else {
+                setNoResultsMessage('');
+            }
             // Check if there are more results
-            if (data.length === 0) {
+            if (data.current == data.pages) {
                 setHasMore(false);
             }
             else {
-                setCampgrounds(data);
                 setHasMore(true);
             }
+            // Replace the existing campgrounds with the new search results
+            setCampgrounds(data.campgrounds);
+            setLoading(false); // Set loading to false after the search request is completed
         }
         catch (error) {
             console.error(error);
+            setLoading(false); // Set loading to false if an error occurs
         }
     };
     const handleNextPage = () => {
@@ -89,7 +108,10 @@ function Searchpage() {
             react_1.default.createElement("div", { className: 'searchresult' },
                 react_1.default.createElement(Nav_1.default, null),
                 react_1.default.createElement(SearchForm_1.default, { handleSearch: handleSearch, campgrounds: campgrounds }),
-                hasMore && (react_1.default.createElement("div", { className: 'loading' }, loading ? react_1.default.createElement("div", { className: "spinner" }) : react_1.default.createElement("button", { className: 'load-more-btn', onClick: handleNextPage, disabled: loading }, " load more")))),
+                noResultsMessage && react_1.default.createElement("p", { className: "no-results-message" }, noResultsMessage),
+                hasMore && (react_1.default.createElement("div", { className: 'loading' }, loading ? (react_1.default.createElement("div", { className: 'spinner' })) : (react_1.default.createElement("button", { className: 'load-more-btn', onClick: handleNextPage, disabled: loading },
+                    ' ',
+                    "load more"))))),
             react_1.default.createElement("div", { className: 'map-container' },
                 react_1.default.createElement(SearchResultMap_1.default, { campgrounds: campgrounds })))));
 }

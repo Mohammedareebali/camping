@@ -28,19 +28,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const SignUp_1 = __importDefault(require("./auth-component/SignUp"));
 const Login_1 = __importDefault(require("./auth-component/Login"));
-const Home_1 = __importDefault(require("./Home"));
 const react_1 = __importStar(require("react"));
 const react_router_dom_1 = require("react-router-dom");
 const jose_1 = require("jose");
 const Main_1 = __importDefault(require("./components/Main"));
 const searchpage_1 = __importDefault(require("./seachpage/searchpage"));
 const CampgroundDetails_1 = __importDefault(require("./seachpage/CampgroundDetails"));
+const NewCampForm_1 = __importDefault(require("./newcamp/NewCampForm"));
+const PrivateRoute_1 = __importDefault(require("./privateroute/PrivateRoute"));
 const App = () => {
     // Define state variable for the JWT
     // Retrieve the JWT from localStorage
     const [token, setToken] = (0, react_1.useState)(() => {
         const storedToken = localStorage.getItem('jwt');
         if (storedToken) {
+            console.log(storedToken);
             return storedToken;
         }
         return null;
@@ -60,8 +62,8 @@ const App = () => {
             }
         }
         catch (err) {
-            console.error(err);
             setUserId(null);
+            setToken(null);
         }
     };
     (0, react_1.useEffect)(() => {
@@ -69,9 +71,11 @@ const App = () => {
         // Store the JWT in localStorage whenever it changes
         if (token) {
             localStorage.setItem('jwt', token);
+            localStorage.setItem('isAuthenticated', 'true');
         }
         else {
             localStorage.removeItem('jwt');
+            localStorage.removeItem('isAuthenticated');
         }
     }, [token]);
     (0, react_1.useEffect)(() => {
@@ -80,12 +84,14 @@ const App = () => {
         }
     }, [userId]);
     return (react_1.default.createElement(react_1.default.Fragment, null,
-        react_1.default.createElement(react_router_dom_1.Routes, null, !userId ? (react_1.default.createElement(react_1.default.Fragment, null,
+        react_1.default.createElement(react_router_dom_1.Routes, null,
             react_1.default.createElement(react_router_dom_1.Route, { path: "/signup", element: react_1.default.createElement(SignUp_1.default, { setToken: setToken }) }),
             react_1.default.createElement(react_router_dom_1.Route, { path: "/login", element: react_1.default.createElement(Login_1.default, { setToken: setToken }) }),
             react_1.default.createElement(react_router_dom_1.Route, { path: "/main", element: react_1.default.createElement(Main_1.default, null) }),
             react_1.default.createElement(react_router_dom_1.Route, { path: '/search/*', element: react_1.default.createElement(searchpage_1.default, null) }),
-            react_1.default.createElement(react_router_dom_1.Route, { path: "/campgrounds/:campgroundId", element: react_1.default.createElement(CampgroundDetails_1.default, null) }))) : (react_1.default.createElement(react_router_dom_1.Route, { path: '/home', element: react_1.default.createElement(Home_1.default, { token: token, setUserId: setUserId, userId: userId, setToken: setToken }) })))));
+            react_1.default.createElement(react_router_dom_1.Route, { path: "/campgrounds/:campgroundId", element: react_1.default.createElement(CampgroundDetails_1.default, { token: token }) }),
+            react_1.default.createElement(react_router_dom_1.Route, { path: '/createcamp', element: react_1.default.createElement(PrivateRoute_1.default, null,
+                    react_1.default.createElement(NewCampForm_1.default, { token: token })) }))));
 };
 exports.default = App;
 //# sourceMappingURL=App.js.map

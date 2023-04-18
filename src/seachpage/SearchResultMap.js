@@ -77,7 +77,7 @@ const Maps = ({ campgrounds }) => {
         };
     };
     return (react_1.default.createElement(react_map_gl_1.default, { ...viewport, ref: mapRef, style: { width: '100%', height: '100%' }, mapStyle: "mapbox://styles/mapbox/light-v11", onMove: evt => setViewport(evt.viewState), mapboxAccessToken: 'pk.eyJ1IjoibW9oYW1tZWQtYXJlZWIiLCJhIjoiY2t6ZDdpcG1rMDQyODJwcGMwOGZvZDVveCJ9.VtXqwPfArJoSqOLzFAfu1g' || '' },
-        campgrounds.map((camp) => (react_1.default.createElement(react_map_gl_1.Marker, { key: camp._id, latitude: camp.coordinates[1], longitude: camp.coordinates[0] },
+        campgrounds.map((camp, index) => (react_1.default.createElement(react_map_gl_1.Marker, { key: `${camp._id}-${index}`, latitude: camp.coordinates[1], longitude: camp.coordinates[0] },
             react_1.default.createElement(fa_1.FaMapMarkerAlt, { size: 30, color: '#3f51b5', onClick: (e) => {
                     e.preventDefault();
                     setSelectedCamp(camp);

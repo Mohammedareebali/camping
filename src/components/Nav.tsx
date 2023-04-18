@@ -18,11 +18,7 @@ const NavComponent: React.FC = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Link to="/" className="nav-link">
-            <span>
-              Home
-              </span>
-            </Link>
+            
           </Nav>
           <Nav>
             <Link to="/login" className="nav-link">
