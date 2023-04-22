@@ -1,41 +1,17 @@
-"use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = __importStar(require("react"));
-require("bootstrap/dist/css/bootstrap.min.css");
-const react_router_dom_1 = require("react-router-dom");
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+import { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from 'react-router-dom';
 const NewCampForm = ({ token }) => {
-    const [name, setName] = (0, react_1.useState)('');
-    const [location, setLocation] = (0, react_1.useState)('');
-    const [description, setDescription] = (0, react_1.useState)('');
-    const [bed, setBed] = (0, react_1.useState)('');
-    const [price, setPrice] = (0, react_1.useState)('');
-    const [wifi, setWifi] = (0, react_1.useState)(false);
-    const [image, setImage] = (0, react_1.useState)(null);
+    const [name, setName] = useState('');
+    const [location, setLocation] = useState('');
+    const [description, setDescription] = useState('');
+    const [bed, setBed] = useState('');
+    const [price, setPrice] = useState('');
+    const [wifi, setWifi] = useState(false);
+    const [image, setImage] = useState(null);
     // calling out use navigate
-    const navigate = (0, react_router_dom_1.useNavigate)();
+    const navigate = useNavigate();
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData();
@@ -68,34 +44,7 @@ const NewCampForm = ({ token }) => {
             console.log(error);
         }
     };
-    return (react_1.default.createElement(react_1.default.Fragment, null,
-        react_1.default.createElement("form", { onSubmit: handleSubmit, className: "bg-light p-3 add" },
-            react_1.default.createElement("h2", { className: "text-center" }, "Add New Camp"),
-            react_1.default.createElement("div", { className: "form-group" },
-                react_1.default.createElement("label", { htmlFor: "name" }, "Name:"),
-                react_1.default.createElement("input", { type: "text", id: "name", value: name, onChange: (event) => setName(event.target.value), className: "form-control" })),
-            react_1.default.createElement("div", { className: "form-group" },
-                react_1.default.createElement("label", { htmlFor: "location" }, "Location:"),
-                react_1.default.createElement("input", { type: "text", id: "location", value: location, onChange: (event) => setLocation(event.target.value), className: "form-control" })),
-            react_1.default.createElement("div", { className: "form-group" },
-                react_1.default.createElement("label", { htmlFor: "description" }, "Description:"),
-                react_1.default.createElement("textarea", { id: "description", value: description, onChange: (event) => setDescription(event.target.value), className: "form-control" })),
-            react_1.default.createElement("div", { className: "form-group" },
-                react_1.default.createElement("label", { htmlFor: "bed" }, "Number of beds:"),
-                react_1.default.createElement("input", { type: "number", id: "bed", value: bed, onChange: (event) => setBed(event.target.value === '' ? '' : parseInt(event.target.value)), className: "form-control" })),
-            react_1.default.createElement("div", { className: "form-group" },
-                react_1.default.createElement("label", { htmlFor: "price" }, "Price:"),
-                react_1.default.createElement("input", { type: "number", id: "price", value: price, onChange: (event) => setPrice(event.target.value === '' ? '' : parseInt(event.target.value)), className: "form-control" })),
-            react_1.default.createElement("div", { className: "form-group" },
-                react_1.default.createElement("label", { htmlFor: "wifi" }, "Wifi:"),
-                react_1.default.createElement("select", { id: "wifi", value: wifi, onChange: (event) => setWifi(event.target.value), className: "form-control" },
-                    react_1.default.createElement("option", { value: "" }, "Select Wifi"),
-                    react_1.default.createElement("option", { value: "true" }, "True"),
-                    react_1.default.createElement("option", { value: "false" }, "False"))),
-            react_1.default.createElement("div", { className: "form-group" },
-                react_1.default.createElement("label", { htmlFor: "image" }, "Image:"),
-                react_1.default.createElement("input", { type: "file", name: 'file', id: "image", onChange: (event) => setImage(event.target.files[0]), className: "form-control" })),
-            react_1.default.createElement("button", { type: "submit", className: "btn btn-primary btn-block" }, "Add Camp"))));
+    return (_jsx(_Fragment, { children: _jsxs("form", { onSubmit: handleSubmit, className: "bg-light p-3 add", children: [_jsx("h2", { className: "text-center", children: "Add New Camp" }), _jsxs("div", { className: "form-group", children: [_jsx("label", { htmlFor: "name", children: "Name:" }), _jsx("input", { type: "text", id: "name", value: name, onChange: (event) => setName(event.target.value), className: "form-control" })] }), _jsxs("div", { className: "form-group", children: [_jsx("label", { htmlFor: "location", children: "Location:" }), _jsx("input", { type: "text", id: "location", value: location, onChange: (event) => setLocation(event.target.value), className: "form-control" })] }), _jsxs("div", { className: "form-group", children: [_jsx("label", { htmlFor: "description", children: "Description:" }), _jsx("textarea", { id: "description", value: description, onChange: (event) => setDescription(event.target.value), className: "form-control" })] }), _jsxs("div", { className: "form-group", children: [_jsx("label", { htmlFor: "bed", children: "Number of beds:" }), _jsx("input", { type: "number", id: "bed", value: bed, onChange: (event) => setBed(event.target.value === '' ? '' : parseInt(event.target.value)), className: "form-control" })] }), _jsxs("div", { className: "form-group", children: [_jsx("label", { htmlFor: "price", children: "Price:" }), _jsx("input", { type: "number", id: "price", value: price, onChange: (event) => setPrice(event.target.value === '' ? '' : parseInt(event.target.value)), className: "form-control" })] }), _jsxs("div", { className: "form-group", children: [_jsx("label", { htmlFor: "wifi", children: "Wifi:" }), _jsxs("select", { id: "wifi", value: wifi, onChange: (event) => setWifi(event.target.value), className: "form-control", children: [_jsx("option", { value: "", children: "Select Wifi" }), _jsx("option", { value: "true", children: "True" }), _jsx("option", { value: "false", children: "False" })] })] }), _jsxs("div", { className: "form-group", children: [_jsx("label", { htmlFor: "image", children: "Image:" }), _jsx("input", { type: "file", name: 'file', id: "image", onChange: (event) => setImage(event.target.files[0]), className: "form-control" })] }), _jsx("button", { type: "submit", className: "btn btn-primary btn-block", children: "Add Camp" })] }) }));
 };
-exports.default = NewCampForm;
+export default NewCampForm;
 //# sourceMappingURL=NewCampForm.js.map

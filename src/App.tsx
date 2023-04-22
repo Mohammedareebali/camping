@@ -1,14 +1,13 @@
 import SignUp from './auth-component/SignUp';
 import Login from './auth-component/Login';
-import Home from './Home'
 import React, { useState, useEffect } from 'react';
 import { Route, Routes,useNavigate } from 'react-router-dom';
 
 import { jwtVerify } from 'jose';
-import Main from './components/Main';
+import Main from './components/Main.js';
 import  Searchpage  from './seachpage/searchpage' ;
 import CampgroundDetails from './seachpage/CampgroundDetails';
-import NewCampForm from './newcamp/NewCampForm';
+import NewCampForm from './newcamp/NewCampForm.js';
 import PrivateRoute from './privateroute/PrivateRoute';
 
 const App: React.FC = () => {

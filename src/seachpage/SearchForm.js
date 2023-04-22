@@ -1,46 +1,13 @@
-"use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = __importStar(require("react"));
-const react_bootstrap_1 = require("react-bootstrap");
-const SearchResult_1 = __importDefault(require("./SearchResult"));
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+import { useState } from "react";
+import { Container, Form, Button } from "react-bootstrap";
+import SearchResult from "./SearchResult.js";
 const SearchComponent = ({ handleSearch, campgrounds }) => {
-    const [searchQuery, setSearchQuery] = (0, react_1.useState)("");
+    const [searchQuery, setSearchQuery] = useState("");
     const handleClear = () => {
         setSearchQuery("");
     };
-    return (react_1.default.createElement(react_1.default.Fragment, null,
-        react_1.default.createElement(react_bootstrap_1.Container, { className: " p-4" },
-            react_1.default.createElement(react_bootstrap_1.Form, { onSubmit: handleSearch, className: "d-flex" },
-                react_1.default.createElement(react_bootstrap_1.Form.Control, { type: "text", placeholder: 'search', className: "me-2", name: 'query', value: searchQuery, onChange: (e) => setSearchQuery(e.target.value) }),
-                react_1.default.createElement(react_bootstrap_1.Button, { variant: "light", type: "button", className: "me-2 clear-btn", onClick: handleClear }, "Clear"),
-                react_1.default.createElement(react_bootstrap_1.Button, { variant: "dark", type: "submit", className: "search-btn" }, "Search"))),
-        react_1.default.createElement(SearchResult_1.default, { campgrounds: campgrounds })));
+    return (_jsxs(_Fragment, { children: [_jsx(Container, { className: " p-4", children: _jsxs(Form, { onSubmit: handleSearch, className: "d-flex", children: [_jsx(Form.Control, { type: "text", placeholder: 'search', className: "me-2", name: 'query', value: searchQuery, onChange: (e) => setSearchQuery(e.target.value) }), _jsx(Button, { variant: "light", type: "button", className: "me-2 clear-btn", onClick: handleClear, children: "Clear" }), _jsx(Button, { variant: "dark", type: "submit", className: "search-btn", children: "Search" })] }) }), _jsx(SearchResult, { campgrounds: campgrounds })] }));
 };
-exports.default = SearchComponent;
+export default SearchComponent;
 //# sourceMappingURL=SearchForm.js.map

@@ -1,45 +1,18 @@
-"use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const SignUp_1 = __importDefault(require("./auth-component/SignUp"));
-const Login_1 = __importDefault(require("./auth-component/Login"));
-const react_1 = __importStar(require("react"));
-const react_router_dom_1 = require("react-router-dom");
-const jose_1 = require("jose");
-const Main_1 = __importDefault(require("./components/Main"));
-const searchpage_1 = __importDefault(require("./seachpage/searchpage"));
-const CampgroundDetails_1 = __importDefault(require("./seachpage/CampgroundDetails"));
-const NewCampForm_1 = __importDefault(require("./newcamp/NewCampForm"));
-const PrivateRoute_1 = __importDefault(require("./privateroute/PrivateRoute"));
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+import SignUp from './auth-component/SignUp';
+import Login from './auth-component/Login';
+import { useState, useEffect } from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import { jwtVerify } from 'jose';
+import Main from './components/Main.js';
+import Searchpage from './seachpage/searchpage';
+import CampgroundDetails from './seachpage/CampgroundDetails';
+import NewCampForm from './newcamp/NewCampForm.js';
+import PrivateRoute from './privateroute/PrivateRoute';
 const App = () => {
     // Define state variable for the JWT
     // Retrieve the JWT from localStorage
-    const [token, setToken] = (0, react_1.useState)(() => {
+    const [token, setToken] = useState(() => {
         const storedToken = localStorage.getItem('jwt');
         if (storedToken) {
             console.log(storedToken);
@@ -48,15 +21,15 @@ const App = () => {
         return null;
     });
     //usenavigate
-    const navigate = (0, react_router_dom_1.useNavigate)();
+    const navigate = useNavigate();
     // Define state variable for the user ID
-    const [userId, setUserId] = (0, react_1.useState)(null);
+    const [userId, setUserId] = useState(null);
     // Decode the JWT to get the user ID
     const verifyToken = async () => {
         try {
             if (token) {
                 const secret = new TextEncoder().encode('secret_key');
-                const { payload } = await (0, jose_1.jwtVerify)(token, secret);
+                const { payload } = await jwtVerify(token, secret);
                 console.log(payload);
                 setUserId(payload.id);
             }
@@ -66,7 +39,7 @@ const App = () => {
             setToken(null);
         }
     };
-    (0, react_1.useEffect)(() => {
+    useEffect(() => {
         verifyToken();
         // Store the JWT in localStorage whenever it changes
         if (token) {
@@ -78,20 +51,12 @@ const App = () => {
             localStorage.removeItem('isAuthenticated');
         }
     }, [token]);
-    (0, react_1.useEffect)(() => {
+    useEffect(() => {
         if (userId) {
             navigate('/home');
         }
     }, [userId]);
-    return (react_1.default.createElement(react_1.default.Fragment, null,
-        react_1.default.createElement(react_router_dom_1.Routes, null,
-            react_1.default.createElement(react_router_dom_1.Route, { path: "/signup", element: react_1.default.createElement(SignUp_1.default, { setToken: setToken }) }),
-            react_1.default.createElement(react_router_dom_1.Route, { path: "/login", element: react_1.default.createElement(Login_1.default, { setToken: setToken }) }),
-            react_1.default.createElement(react_router_dom_1.Route, { path: "/main", element: react_1.default.createElement(Main_1.default, null) }),
-            react_1.default.createElement(react_router_dom_1.Route, { path: '/search/*', element: react_1.default.createElement(searchpage_1.default, null) }),
-            react_1.default.createElement(react_router_dom_1.Route, { path: "/campgrounds/:campgroundId", element: react_1.default.createElement(CampgroundDetails_1.default, { token: token }) }),
-            react_1.default.createElement(react_router_dom_1.Route, { path: '/createcamp', element: react_1.default.createElement(PrivateRoute_1.default, null,
-                    react_1.default.createElement(NewCampForm_1.default, { token: token })) }))));
+    return (_jsx(_Fragment, { children: _jsxs(Routes, { children: [_jsx(Route, { path: "/signup", element: _jsx(SignUp, { setToken: setToken }) }), _jsx(Route, { path: "/login", element: _jsx(Login, { setToken: setToken }) }), _jsx(Route, { path: "/main", element: _jsx(Main, {}) }), _jsx(Route, { path: '/search/*', element: _jsx(Searchpage, {}) }), _jsx(Route, { path: "/campgrounds/:campgroundId", element: _jsx(CampgroundDetails, { token: token }) }), _jsx(Route, { path: '/createcamp', element: _jsx(PrivateRoute, { children: _jsx(NewCampForm, { token: token }) }) })] }) }));
 };
-exports.default = App;
+export default App;
 //# sourceMappingURL=App.js.map

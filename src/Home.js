@@ -1,12 +1,7 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = __importDefault(require("react"));
-const react_router_dom_1 = require("react-router-dom");
+import { jsxs as _jsxs, jsx as _jsx } from "react/jsx-runtime";
+import { useNavigate } from 'react-router-dom';
 const Home = ({ userId, setUserId, token, setToken }) => {
-    const navigate = (0, react_router_dom_1.useNavigate)();
+    const navigate = useNavigate();
     const handleLogout = async () => {
         try {
             const response = await fetch('/logout', {
@@ -34,11 +29,7 @@ const Home = ({ userId, setUserId, token, setToken }) => {
             console.error('Error logging out', error);
         }
     };
-    return (react_1.default.createElement("div", null,
-        react_1.default.createElement("h1", null,
-            "Welcome, user with ID: ",
-            userId),
-        react_1.default.createElement("button", { onClick: handleLogout }, "Logout")));
+    return (_jsxs("div", { children: [_jsxs("h1", { children: ["Welcome, user with ID: ", userId] }), _jsx("button", { onClick: handleLogout, children: "Logout" })] }));
 };
-exports.default = Home;
+export default Home;
 //# sourceMappingURL=Home.js.map

@@ -3,8 +3,8 @@ import {  useNavigate, useParams } from "react-router-dom";
 import { Card, Container, Row, Col, Button } from "react-bootstrap";
 import Map, { Marker } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import ReviewPopup from "./ReviewPopup";
-import ReviewDisplay from './ReviewDisplay';
+import ReviewPopup from "./ReviewPopup.js";
+import ReviewDisplay from './ReviewDisplay.js';
 
 
 interface Props{

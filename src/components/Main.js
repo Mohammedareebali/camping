@@ -1,57 +1,12 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = __importDefault(require("react"));
-const react_bootstrap_1 = require("react-bootstrap");
-const react_router_dom_1 = require("react-router-dom");
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 const img = require('../pics/icon-small.png');
 const checkmark = require('../pics/checkmark.svg').default;
 const booking = require('../pics/Booking.svg').default;
 const airbnb = require('../pics/Airbnb.svg').default;
 const plumguide = require('../pics/Plumguide.svg').default;
-function Main() {
-    return (react_1.default.createElement("div", { className: "containers mainContainer" },
-        react_1.default.createElement("section", { className: "login-form mainlogin" },
-            react_1.default.createElement("div", { className: 'logo-text mainlogo' },
-                react_1.default.createElement("p", null,
-                    react_1.default.createElement("b", null,
-                        " ",
-                        react_1.default.createElement("img", { src: img, alt: 'YelpCamp logo' }),
-                        "yelpCamp"))),
-            react_1.default.createElement("div", { className: "forms mainform" },
-                react_1.default.createElement("h1", null,
-                    react_1.default.createElement("b", null, "Explore the best camps on Earth.")),
-                react_1.default.createElement("p", null, "YelpCamp is a curated list of the best camping spots on Earth. unfiltered and unbiased reviews."),
-                react_1.default.createElement("div", { className: 'list' },
-                    react_1.default.createElement("ul", null,
-                        react_1.default.createElement("li", null,
-                            react_1.default.createElement("img", { src: checkmark, alt: 'checkmark' }),
-                            "Add your own camp suggestions."),
-                        react_1.default.createElement("li", null,
-                            react_1.default.createElement("img", { src: checkmark, alt: 'checkmark' }),
-                            "Leave reviews and experiences"),
-                        react_1.default.createElement("li", null,
-                            react_1.default.createElement("img", { src: checkmark, alt: 'checkmark' }),
-                            "See locations for all camps"))),
-                react_1.default.createElement("div", { className: 'view' },
-                    react_1.default.createElement(react_bootstrap_1.Button, { variant: 'dark', className: 'color' },
-                        react_1.default.createElement(react_router_dom_1.Link, { to: '/search' }, "View Campgrounds"))),
-                react_1.default.createElement("div", { className: "partners" },
-                    react_1.default.createElement("p", null,
-                        react_1.default.createElement("b", null, "Partnered with:")),
-                    react_1.default.createElement("div", { className: 'partner-logo' },
-                        react_1.default.createElement("img", { src: booking, alt: 'booking' }),
-                        react_1.default.createElement("img", { src: airbnb, alt: 'airbnb' }),
-                        react_1.default.createElement("img", { src: plumguide, alt: 'plumguide' }))))),
-        react_1.default.createElement("section", { className: "testimonial campImg" }),
-        react_1.default.createElement("section", { className: 'logo-text n' },
-            react_1.default.createElement("p", null,
-                react_1.default.createElement("b", null,
-                    " ",
-                    react_1.default.createElement("img", { src: img, alt: 'YelpCamp logo' }),
-                    "yelpCamp")))));
+export default function Main() {
+    return (_jsxs("div", { className: "containers mainContainer", children: [_jsxs("section", { className: "login-form mainlogin", children: [_jsx("div", { className: 'logo-text mainlogo', children: _jsx("p", { children: _jsxs("b", { children: [" ", _jsx("img", { src: img, alt: 'YelpCamp logo' }), "yelpCamp"] }) }) }), _jsxs("div", { className: "forms mainform", children: [_jsx("h1", { children: _jsx("b", { children: "Explore the best camps on Earth." }) }), _jsx("p", { children: "YelpCamp is a curated list of the best camping spots on Earth. unfiltered and unbiased reviews." }), _jsx("div", { className: 'list', children: _jsxs("ul", { children: [_jsxs("li", { children: [_jsx("img", { src: checkmark, alt: 'checkmark' }), "Add your own camp suggestions."] }), _jsxs("li", { children: [_jsx("img", { src: checkmark, alt: 'checkmark' }), "Leave reviews and experiences"] }), _jsxs("li", { children: [_jsx("img", { src: checkmark, alt: 'checkmark' }), "See locations for all camps"] })] }) }), _jsx("div", { className: 'view', children: _jsx(Button, { variant: 'dark', className: 'color', children: _jsx(Link, { to: '/search', children: "View Campgrounds" }) }) }), _jsxs("div", { className: "partners", children: [_jsx("p", { children: _jsx("b", { children: "Partnered with:" }) }), _jsxs("div", { className: 'partner-logo', children: [_jsx("img", { src: booking, alt: 'booking' }), _jsx("img", { src: airbnb, alt: 'airbnb' }), _jsx("img", { src: plumguide, alt: 'plumguide' })] })] })] })] }), _jsx("section", { className: "testimonial campImg" }), _jsx("section", { className: 'logo-text n', children: _jsx("p", { children: _jsxs("b", { children: [" ", _jsx("img", { src: img, alt: 'YelpCamp logo' }), "yelpCamp"] }) }) })] }));
 }
-exports.default = Main;
 //# sourceMappingURL=Main.js.map

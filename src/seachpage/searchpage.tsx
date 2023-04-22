@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Nav from '../components/Nav';
-import SearchComponent from './SearchForm';
-import Maps from './SearchResultMap';
+import Nav from '../components/Nav.js';
+import SearchComponent from './SearchForm.js';
+import Maps from './SearchResultMap.js';
 
 interface Campground {
   coordinates: [number, number];

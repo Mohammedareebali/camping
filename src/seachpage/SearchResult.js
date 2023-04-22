@@ -1,44 +1,15 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = __importDefault(require("react"));
-const react_bootstrap_1 = require("react-bootstrap");
-const react_router_dom_1 = require("react-router-dom");
-const fa_1 = require("react-icons/fa");
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Container } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { FaMapMarkerAlt, FaHouseUser, FaWifi } from "react-icons/fa";
 const SearchResult = ({ campgrounds }) => {
-    const history = (0, react_router_dom_1.useNavigate)();
+    const history = useNavigate();
     const result = campgrounds;
     console.log(result);
     const handleViewCampground = (campgroundId) => {
         history(`/campgrounds/${campgroundId}`);
     };
-    return (react_1.default.createElement(react_bootstrap_1.Container, { className: "scroll" },
-        react_1.default.createElement("div", { className: "cards-container" }, result.map((campground, index) => (react_1.default.createElement("div", { className: "card", key: `campground-${campground._id}-${index}`, onClick: () => handleViewCampground(campground._id) },
-            react_1.default.createElement("div", { className: "card-image" },
-                react_1.default.createElement("img", { src: campground.imageUrl, alt: "Campground" })),
-            react_1.default.createElement("div", { className: "card-content" },
-                react_1.default.createElement("h3", { className: "card-title" }, campground.name),
-                react_1.default.createElement("p", { className: "card-text" }, campground.description),
-                react_1.default.createElement("div", { className: "reviews" },
-                    campground.reviews,
-                    " Reviews"),
-                react_1.default.createElement("div", { className: "card-info-container" },
-                    react_1.default.createElement("div", { className: "card-info" },
-                        react_1.default.createElement("div", { className: "location" },
-                            react_1.default.createElement(fa_1.FaMapMarkerAlt, { size: 15, color: "grey" }),
-                            campground.location),
-                        react_1.default.createElement("div", { className: "bed" },
-                            react_1.default.createElement(fa_1.FaHouseUser, { size: 15, color: "grey" }),
-                            campground.bed,
-                            " Bed(s)"),
-                        react_1.default.createElement("div", { className: "wifi" },
-                            campground.wifi && react_1.default.createElement(fa_1.FaWifi, { size: 15, color: "grey" }),
-                            campground.wifi ? "Wifi" : "No Wifi")),
-                    react_1.default.createElement("div", { className: "price-tag" },
-                        "$",
-                        campground.price)))))))));
+    return (_jsx(Container, { className: "scroll", children: _jsx("div", { className: "cards-container", children: result.map((campground, index) => (_jsxs("div", { className: "card", onClick: () => handleViewCampground(campground._id), children: [_jsx("div", { className: "card-image", children: _jsx("img", { src: campground.imageUrl, alt: "Campground" }) }), _jsxs("div", { className: "card-content", children: [_jsx("h3", { className: "card-title", children: campground.name }), _jsx("p", { className: "card-text", children: campground.description }), _jsxs("div", { className: "reviews", children: [campground.reviews, " Reviews"] }), _jsxs("div", { className: "card-info-container", children: [_jsxs("div", { className: "card-info", children: [_jsxs("div", { className: "location", children: [_jsx(FaMapMarkerAlt, { size: 15, color: "grey" }), campground.location] }), _jsxs("div", { className: "bed", children: [_jsx(FaHouseUser, { size: 15, color: "grey" }), campground.bed, " Bed(s)"] }), _jsxs("div", { className: "wifi", children: [campground.wifi && _jsx(FaWifi, { size: 15, color: "grey" }), campground.wifi ? "Wifi" : "No Wifi"] })] }), _jsxs("div", { className: "price-tag", children: ["$", campground.price] })] })] })] }, `campground-${campground._id}-${index}`))) }) }));
 };
-exports.default = SearchResult;
+export default SearchResult;
 //# sourceMappingURL=SearchResult.js.map

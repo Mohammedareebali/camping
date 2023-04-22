@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 
-import SearchResult from "./SearchResult";
+import SearchResult from "./SearchResult.js";
 interface SearchProps {
   handleSearch : any;
   campgrounds: any;

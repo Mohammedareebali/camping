@@ -1,53 +1,26 @@
-"use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = __importStar(require("react"));
-const react_router_dom_1 = require("react-router-dom");
-const react_bootstrap_1 = require("react-bootstrap");
-const react_map_gl_1 = __importStar(require("react-map-gl"));
-require("mapbox-gl/dist/mapbox-gl.css");
-const ReviewPopup_1 = __importDefault(require("./ReviewPopup"));
-const ReviewDisplay_1 = __importDefault(require("./ReviewDisplay"));
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { Card, Container, Row, Col, Button } from "react-bootstrap";
+import Map, { Marker } from "react-map-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
+import ReviewPopup from "./ReviewPopup.js";
+import ReviewDisplay from './ReviewDisplay.js';
 const CampgroundDetails = ({ token }) => {
-    const { campgroundId } = (0, react_router_dom_1.useParams)();
+    const { campgroundId } = useParams();
     const selectedCampgroundId = campgroundId;
-    const [loading, setLoading] = (0, react_1.useState)(true);
-    const [error, setError] = (0, react_1.useState)("");
-    const [campground, setCampground] = (0, react_1.useState)(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+    const [campground, setCampground] = useState(null);
     // Add new state for reviews
-    const [reviews, setReviews] = (0, react_1.useState)([]);
-    const [viewport, setViewport] = (0, react_1.useState)({
+    const [reviews, setReviews] = useState([]);
+    const [viewport, setViewport] = useState({
         latitude: 0,
         longitude: 0,
         zoom: 10,
     });
-    const [showReviewPopup, setShowReviewPopup] = (0, react_1.useState)(false); // Add this state
-    const navigate = (0, react_router_dom_1.useNavigate)();
+    const [showReviewPopup, setShowReviewPopup] = useState(false); // Add this state
+    const navigate = useNavigate();
     // CampgroundDetails.tsx
     const handleSaveReview = async (review, emojiRating) => {
         try {
@@ -76,7 +49,7 @@ const CampgroundDetails = ({ token }) => {
             alert('Failed to save review');
         }
     };
-    (0, react_1.useEffect)(() => {
+    useEffect(() => {
         const fetchData = async () => {
             try {
                 // fetch campground details
@@ -102,35 +75,13 @@ const CampgroundDetails = ({ token }) => {
         fetchData();
     }, []);
     if (error) {
-        return react_1.default.createElement("p", null, error);
+        return _jsx("p", { children: error });
     }
     if (loading || !campground) {
-        return react_1.default.createElement("p", null, "Loading...");
+        return _jsx("p", { children: "Loading..." });
     }
-    return (react_1.default.createElement(react_bootstrap_1.Container, null,
-        react_1.default.createElement(react_bootstrap_1.Row, null,
-            react_1.default.createElement(react_bootstrap_1.Col, null,
-                react_1.default.createElement("h1", null, campground.name))),
-        react_1.default.createElement(react_bootstrap_1.Row, null,
-            react_1.default.createElement(react_bootstrap_1.Col, null,
-                react_1.default.createElement(react_bootstrap_1.Card, { key: campground._id },
-                    react_1.default.createElement(react_bootstrap_1.Card.Img, { variant: "top", src: campground.imageUrl })))),
-        react_1.default.createElement(react_bootstrap_1.Row, { className: "secondrow" },
-            react_1.default.createElement(react_bootstrap_1.Col, { md: 6 },
-                react_1.default.createElement(react_bootstrap_1.Card, null,
-                    react_1.default.createElement(react_bootstrap_1.Card.Body, null,
-                        react_1.default.createElement(react_bootstrap_1.Card.Text, null, campground.description)))),
-            react_1.default.createElement(react_bootstrap_1.Col, { md: 6 },
-                react_1.default.createElement("div", { style: { width: "100%", height: "400px" } },
-                    react_1.default.createElement(react_map_gl_1.default, { ...viewport, style: { width: "100%", height: "100%" }, mapStyle: "mapbox://styles/mapbox/streets-v9", onMove: (evt) => setViewport(evt.viewState), mapboxAccessToken: "pk.eyJ1IjoibW9oYW1tZWQtYXJlZWIiLCJhIjoiY2t6ZDdpcG1rMDQyODJwcGMwOGZvZDVveCJ9.VtXqwPfArJoSqOLzFAfu1g" ||
-                            "" }, campground.coordinates ? (react_1.default.createElement(react_map_gl_1.Marker, { latitude: campground.coordinates[1], longitude: campground.coordinates[0] })) : null)))),
-        react_1.default.createElement(react_bootstrap_1.Row, null,
-            react_1.default.createElement(react_bootstrap_1.Col, null,
-                react_1.default.createElement(ReviewDisplay_1.default, { reviews: reviews }))),
-        react_1.default.createElement(react_bootstrap_1.Row, null,
-            react_1.default.createElement(react_bootstrap_1.Col, null,
-                react_1.default.createElement(react_bootstrap_1.Button, { onClick: () => setShowReviewPopup(true) }, "Add Review"),
-                react_1.default.createElement(ReviewPopup_1.default, { show: showReviewPopup, handleClose: () => setShowReviewPopup(false), handleSave: handleSaveReview })))));
+    return (_jsxs(Container, { children: [_jsx(Row, { children: _jsx(Col, { children: _jsx("h1", { children: campground.name }) }) }), _jsx(Row, { children: _jsx(Col, { children: _jsx(Card, { children: _jsx(Card.Img, { variant: "top", src: campground.imageUrl }) }, campground._id) }) }), _jsxs(Row, { className: "secondrow", children: [_jsx(Col, { md: 6, children: _jsx(Card, { children: _jsx(Card.Body, { children: _jsx(Card.Text, { children: campground.description }) }) }) }), _jsx(Col, { md: 6, children: _jsx("div", { style: { width: "100%", height: "400px" }, children: _jsx(Map, { ...viewport, style: { width: "100%", height: "100%" }, mapStyle: "mapbox://styles/mapbox/streets-v9", onMove: (evt) => setViewport(evt.viewState), mapboxAccessToken: "pk.eyJ1IjoibW9oYW1tZWQtYXJlZWIiLCJhIjoiY2t6ZDdpcG1rMDQyODJwcGMwOGZvZDVveCJ9.VtXqwPfArJoSqOLzFAfu1g" ||
+                                    "", children: campground.coordinates ? (_jsx(Marker, { latitude: campground.coordinates[1], longitude: campground.coordinates[0] })) : null }) }) })] }), _jsx(Row, { children: _jsx(Col, { children: _jsx(ReviewDisplay, { reviews: reviews }) }) }), _jsx(Row, { children: _jsxs(Col, { children: [_jsx(Button, { onClick: () => setShowReviewPopup(true), children: "Add Review" }), _jsx(ReviewPopup, { show: showReviewPopup, handleClose: () => setShowReviewPopup(false), handleSave: handleSaveReview })] }) })] }));
 };
-exports.default = CampgroundDetails;
+export default CampgroundDetails;
 //# sourceMappingURL=CampgroundDetails.js.map

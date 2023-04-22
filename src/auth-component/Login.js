@@ -1,39 +1,15 @@
-"use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = __importStar(require("react"));
-const react_router_dom_1 = require("react-router-dom");
-const react_bootstrap_1 = require("react-bootstrap");
-require("../auth-css/login.css");
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+import { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { Form, Button, Alert, Card, Row, Col } from 'react-bootstrap';
+import '../auth-css/login.css';
 const img = require('../pics/icon-small.png');
 const authorImg = require('../pics/a.png');
 const Login = ({ setToken }) => {
-    const [email, setEmail] = (0, react_1.useState)('');
-    const [password, setPassword] = (0, react_1.useState)('');
-    const [error, setError] = (0, react_1.useState)(null);
-    const navigate = (0, react_router_dom_1.useNavigate)();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState(null);
+    const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -57,46 +33,7 @@ const Login = ({ setToken }) => {
             console.log(err);
         }
     };
-    return (react_1.default.createElement(react_1.default.Fragment, null,
-        react_1.default.createElement("div", { className: "containers" },
-            react_1.default.createElement("section", { className: "login-form" },
-                react_1.default.createElement("div", { className: 'logo-text' },
-                    react_1.default.createElement("p", null,
-                        react_1.default.createElement("b", null,
-                            " ",
-                            react_1.default.createElement("img", { src: img, alt: 'this' }),
-                            "yelpCamp")),
-                    react_1.default.createElement(react_router_dom_1.Link, { to: "/main" },
-                        react_1.default.createElement("p", { className: 'back' },
-                            react_1.default.createElement("i", { className: "fas fa-arrow-left" }),
-                            " Back"))),
-                react_1.default.createElement("div", { className: "forms" },
-                    react_1.default.createElement("h2", null,
-                        react_1.default.createElement("b", null, "Start exploring camps from all over around the world")),
-                    react_1.default.createElement(react_bootstrap_1.Form, { onSubmit: handleSubmit },
-                        error && react_1.default.createElement(react_bootstrap_1.Alert, { variant: "danger" }, error),
-                        react_1.default.createElement(react_bootstrap_1.Form.Group, { controlId: "formBasicEmail" },
-                            react_1.default.createElement(react_bootstrap_1.Form.Label, null, "Email address"),
-                            react_1.default.createElement(react_bootstrap_1.Form.Control, { type: "email", placeholder: "Enter email", value: email, onChange: e => setEmail(e.target.value) })),
-                        react_1.default.createElement(react_bootstrap_1.Form.Group, { controlId: "formBasicPassword" },
-                            react_1.default.createElement(react_bootstrap_1.Form.Label, null, "Password"),
-                            react_1.default.createElement(react_bootstrap_1.Form.Control, { type: "password", placeholder: "Password", value: password, onChange: e => setPassword(e.target.value) })),
-                        react_1.default.createElement(react_bootstrap_1.Button, { variant: "dark", type: "submit" }, "Login")),
-                    react_1.default.createElement("p", null,
-                        "Not a user yet? ",
-                        react_1.default.createElement(react_router_dom_1.Link, { to: "/signup" }, "Create an account")))),
-            react_1.default.createElement("section", { className: "testimonial" },
-                react_1.default.createElement("h3", null, "\"YelpCamp has honestly saved me hours of research time, and the camps on here are definitely well picked and added\""),
-                react_1.default.createElement(react_bootstrap_1.Card, null,
-                    react_1.default.createElement(react_bootstrap_1.Row, null,
-                        react_1.default.createElement(react_bootstrap_1.Col, { md: 2 },
-                            react_1.default.createElement("div", { className: "imag" },
-                                react_1.default.createElement("img", { className: 'img', src: authorImg, alt: 'that' }))),
-                        react_1.default.createElement(react_bootstrap_1.Col, { md: 10 },
-                            react_1.default.createElement("div", { className: 'column' },
-                                react_1.default.createElement("p", { className: "name" },
-                                    react_1.default.createElement("b", null, "Mohammed Areeb Ali")),
-                                react_1.default.createElement("p", { className: 'profession' }, "Professional hiker")))))))));
+    return (_jsx(_Fragment, { children: _jsxs("div", { className: "containers", children: [_jsxs("section", { className: "login-form", children: [_jsxs("div", { className: 'logo-text', children: [_jsx("p", { children: _jsxs("b", { children: [" ", _jsx("img", { src: img, alt: 'this' }), "yelpCamp"] }) }), _jsx(Link, { to: "/main", children: _jsxs("p", { className: 'back', children: [_jsx("i", { className: "fas fa-arrow-left" }), " Back"] }) })] }), _jsxs("div", { className: "forms", children: [_jsx("h2", { children: _jsx("b", { children: "Start exploring camps from all over around the world" }) }), _jsxs(Form, { onSubmit: handleSubmit, children: [error && _jsx(Alert, { variant: "danger", children: error }), _jsxs(Form.Group, { controlId: "formBasicEmail", children: [_jsx(Form.Label, { children: "Email address" }), _jsx(Form.Control, { type: "email", placeholder: "Enter email", value: email, onChange: e => setEmail(e.target.value) })] }), _jsxs(Form.Group, { controlId: "formBasicPassword", children: [_jsx(Form.Label, { children: "Password" }), _jsx(Form.Control, { type: "password", placeholder: "Password", value: password, onChange: e => setPassword(e.target.value) })] }), _jsx(Button, { variant: "dark", type: "submit", children: "Login" })] }), _jsxs("p", { children: ["Not a user yet? ", _jsx(Link, { to: "/signup", children: "Create an account" })] })] })] }), _jsxs("section", { className: "testimonial", children: [_jsx("h3", { children: "\"YelpCamp has honestly saved me hours of research time, and the camps on here are definitely well picked and added\"" }), _jsx(Card, { children: _jsxs(Row, { children: [_jsx(Col, { md: 2, children: _jsx("div", { className: "imag", children: _jsx("img", { className: 'img', src: authorImg, alt: 'that' }) }) }), _jsx(Col, { md: 10, children: _jsxs("div", { className: 'column', children: [_jsx("p", { className: "name", children: _jsx("b", { children: "Mohammed Areeb Ali" }) }), _jsx("p", { className: 'profession', children: "Professional hiker" })] }) })] }) })] })] }) }));
 };
-exports.default = Login;
+export default Login;
 //# sourceMappingURL=Login.js.map
