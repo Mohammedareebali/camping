@@ -1,4 +1,5 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { jsxs as _jsxs, jsx as _jsx } from "react/jsx-runtime";
+import { Accordion } from "react-bootstrap";
 const getEmoji = (rating) => {
     const emojis = ["😡", "😞", "😐", "😃", "😍"];
     if (rating < 1 || rating > 5)
@@ -14,7 +15,7 @@ const formatDate = (dateString) => {
     });
 };
 const ReviewDisplay = ({ reviews }) => {
-    return (_jsx("div", { className: "review-display", children: reviews.map((review, index) => (_jsxs("div", { className: "review", children: [_jsx("div", { className: "emoji", children: getEmoji(review.emojiRating) }), _jsxs("div", { className: "comment", children: [_jsx("div", { children: review.comment }), _jsxs("div", { className: "review-meta", children: [_jsxs("span", { children: ["Posted by ", review.postedBy, " "] }), _jsxs("span", { children: ["on ", formatDate(review.createdAt)] })] })] })] }, index))) }));
+    return (_jsx(Accordion, { defaultActiveKey: "0", children: reviews.map((review, index) => (_jsxs(Accordion.Item, { eventKey: index.toString(), children: [_jsxs(Accordion.Header, { children: [getEmoji(review.emojiRating), " - Posted by ", review.postedBy, " on ", formatDate(review.createdAt)] }), _jsx(Accordion.Body, { children: review.comment })] }, index))) }));
 };
 export default ReviewDisplay;
 //# sourceMappingURL=ReviewDisplay.js.map

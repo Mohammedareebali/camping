@@ -70,7 +70,7 @@ if (response.ok) {
           onChange={e => setPassword(e.target.value)}
         />
       </Form.Group>
-      <Button variant="dark" type="submit">
+      <Button  type="submit">
         Login
       </Button>
     </Form>

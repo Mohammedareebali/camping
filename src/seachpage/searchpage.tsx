@@ -15,6 +15,7 @@ interface Campground {
 
 export default function Searchpage() {
   const [loading, setLoading] = useState(true);
+  const [loggedIn, setLoggedIn] = useState<boolean>(localStorage.getItem('isAuthenticated') === 'true');
   const [campgrounds, setCampgrounds] = useState<Campground[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [noResultsMessage, setNoResultsMessage] = useState('');
@@ -99,9 +100,9 @@ export default function Searchpage() {
   return (
   <div className='searchpage'>
     <div className='search-container'>
-      <Nav />
+    <Nav loggedIn={loggedIn} />
       <div className='searchresult'>
-        <Nav />
+      <Nav loggedIn={loggedIn} />
         <SearchComponent handleSearch={handleSearch} campgrounds={campgrounds} />
         {noResultsMessage && <p className="no-results-message">{noResultsMessage}</p>}
         {hasMore && (

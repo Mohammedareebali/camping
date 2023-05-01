@@ -30,7 +30,7 @@ const SearchComponent: React.FC<SearchProps> = ({handleSearch,campgrounds}) => {
         <Button variant="light" type="button" className="me-2 clear-btn" onClick={handleClear}>
             Clear
           </Button>
-          <Button variant="dark" type="submit" className="search-btn">
+          <Button type="submit" className="search-btn">
             Search
           </Button>
       </Form>

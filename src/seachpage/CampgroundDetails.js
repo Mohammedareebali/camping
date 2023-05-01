@@ -1,14 +1,16 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { Card, Container, Row, Col, Button } from "react-bootstrap";
 import Map, { Marker } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import ReviewPopup from "./ReviewPopup.js";
 import ReviewDisplay from './ReviewDisplay.js';
+import NavComponent from "components/Nav.js";
 const CampgroundDetails = ({ token }) => {
     const { campgroundId } = useParams();
     const selectedCampgroundId = campgroundId;
+    const [loggedIn, setLoggedIn] = useState(localStorage.getItem('isAuthenticated') === 'true');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
     const [campground, setCampground] = useState(null);
@@ -80,8 +82,8 @@ const CampgroundDetails = ({ token }) => {
     if (loading || !campground) {
         return _jsx("p", { children: "Loading..." });
     }
-    return (_jsxs(Container, { children: [_jsx(Row, { children: _jsx(Col, { children: _jsx("h1", { children: campground.name }) }) }), _jsx(Row, { children: _jsx(Col, { children: _jsx(Card, { children: _jsx(Card.Img, { variant: "top", src: campground.imageUrl }) }, campground._id) }) }), _jsxs(Row, { className: "secondrow", children: [_jsx(Col, { md: 6, children: _jsx(Card, { children: _jsx(Card.Body, { children: _jsx(Card.Text, { children: campground.description }) }) }) }), _jsx(Col, { md: 6, children: _jsx("div", { style: { width: "100%", height: "400px" }, children: _jsx(Map, { ...viewport, style: { width: "100%", height: "100%" }, mapStyle: "mapbox://styles/mapbox/streets-v9", onMove: (evt) => setViewport(evt.viewState), mapboxAccessToken: "pk.eyJ1IjoibW9oYW1tZWQtYXJlZWIiLCJhIjoiY2t6ZDdpcG1rMDQyODJwcGMwOGZvZDVveCJ9.VtXqwPfArJoSqOLzFAfu1g" ||
-                                    "", children: campground.coordinates ? (_jsx(Marker, { latitude: campground.coordinates[1], longitude: campground.coordinates[0] })) : null }) }) })] }), _jsx(Row, { children: _jsx(Col, { children: _jsx(ReviewDisplay, { reviews: reviews }) }) }), _jsx(Row, { children: _jsxs(Col, { children: [_jsx(Button, { onClick: () => setShowReviewPopup(true), children: "Add Review" }), _jsx(ReviewPopup, { show: showReviewPopup, handleClose: () => setShowReviewPopup(false), handleSave: handleSaveReview })] }) })] }));
+    return (_jsxs(_Fragment, { children: [_jsx(NavComponent, { loggedIn: loggedIn }), " ", _jsxs(Container, { className: "contain", children: [_jsx(Row, { children: _jsx(Col, { children: _jsx(Link, { to: "/search", children: _jsxs("p", { className: 'back', children: [_jsx("i", { className: "fas fa-arrow-left" }), " Back to search results"] }) }) }) }), _jsx(Row, { children: _jsx(Col, { children: _jsx(Card, { children: _jsx(Card.Img, { variant: "top", src: campground.imageUrl }) }, campground._id) }) }), _jsx(Row, { children: _jsx(Col, { children: _jsx("h1", { children: campground.name }) }) }), _jsxs(Row, { className: "description", children: [_jsxs(Col, { md: 6, children: [_jsx("h2", { children: "Description" }), _jsx("p", { children: campground.description })] }), _jsxs(Col, { md: 6, children: [_jsx("h2", { children: "Location" }), _jsx("div", { style: { width: "100%", height: "400px" }, children: _jsx(Map, { ...viewport, style: { width: "100%", height: "100%" }, mapStyle: "mapbox://styles/mapbox/streets-v9", onMove: (evt) => setViewport(evt.viewState), mapboxAccessToken: "pk.eyJ1IjoibW9oYW1tZWQtYXJlZWIiLCJhIjoiY2t6ZDdpcG1rMDQyODJwcGMwOGZvZDVveCJ9.VtXqwPfArJoSqOLzFAfu1g" ||
+                                                "", children: campground.coordinates ? (_jsx(Marker, { latitude: campground.coordinates[1], longitude: campground.coordinates[0] })) : null }) }), _jsx("h2", { children: "Price per night" }), _jsxs("p", { children: ["$", campground.price] })] })] }), _jsx(Row, { children: _jsxs(Col, { children: [_jsx("h2", { className: "reviewheading", children: "Reviews" }), _jsx(ReviewDisplay, { reviews: reviews })] }) }), _jsx(Row, { children: _jsxs(Col, { children: [_jsx(Button, { onClick: () => setShowReviewPopup(true), children: "Add Review" }), _jsx(ReviewPopup, { show: showReviewPopup, handleClose: () => setShowReviewPopup(false), handleSave: handleSaveReview })] }) })] })] }));
 };
 export default CampgroundDetails;
 //# sourceMappingURL=CampgroundDetails.js.map

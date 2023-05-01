@@ -5,6 +5,7 @@ import SearchComponent from './SearchForm.js';
 import Maps from './SearchResultMap.js';
 export default function Searchpage() {
     const [loading, setLoading] = useState(true);
+    const [loggedIn, setLoggedIn] = useState(localStorage.getItem('isAuthenticated') === 'true');
     const [campgrounds, setCampgrounds] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [noResultsMessage, setNoResultsMessage] = useState('');
@@ -75,6 +76,6 @@ export default function Searchpage() {
     const handleNextPage = () => {
         setCurrentPage(prevPage => prevPage + 1);
     };
-    return (_jsx("div", { className: 'searchpage', children: _jsxs("div", { className: 'search-container', children: [_jsx(Nav, {}), _jsxs("div", { className: 'searchresult', children: [_jsx(Nav, {}), _jsx(SearchComponent, { handleSearch: handleSearch, campgrounds: campgrounds }), noResultsMessage && _jsx("p", { className: "no-results-message", children: noResultsMessage }), hasMore && (_jsx("div", { className: 'loading', children: loading ? (_jsx("div", { className: 'spinner' })) : (_jsxs("button", { className: 'load-more-btn', onClick: handleNextPage, disabled: loading, children: [' ', "load more"] })) }))] }), _jsx("div", { className: 'map-container', children: _jsx(Maps, { campgrounds: campgrounds }) })] }) }));
+    return (_jsx("div", { className: 'searchpage', children: _jsxs("div", { className: 'search-container', children: [_jsx(Nav, { loggedIn: loggedIn }), _jsxs("div", { className: 'searchresult', children: [_jsx(Nav, { loggedIn: loggedIn }), _jsx(SearchComponent, { handleSearch: handleSearch, campgrounds: campgrounds }), noResultsMessage && _jsx("p", { className: "no-results-message", children: noResultsMessage }), hasMore && (_jsx("div", { className: 'loading', children: loading ? (_jsx("div", { className: 'spinner' })) : (_jsxs("button", { className: 'load-more-btn', onClick: handleNextPage, disabled: loading, children: [' ', "load more"] })) }))] }), _jsx("div", { className: 'map-container', children: _jsx(Maps, { campgrounds: campgrounds }) })] }) }));
 }
 //# sourceMappingURL=searchpage.js.map

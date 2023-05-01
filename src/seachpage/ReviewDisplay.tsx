@@ -1,7 +1,5 @@
-// ReviewDisplay.tsx
-
 import React from "react";
-
+import { Accordion } from "react-bootstrap";
 
 interface Review {
   emojiRating: number;
@@ -33,20 +31,16 @@ const formatDate = (dateString: string): string => {
 
 const ReviewDisplay: React.FC<Props> = ({ reviews }) => {
   return (
-    <div className="review-display">
+    <Accordion defaultActiveKey="0">
       {reviews.map((review, index) => (
-        <div className="review" key={index}>
-          <div className="emoji">{getEmoji(review.emojiRating)}</div>
-          <div className="comment">
-            <div>{review.comment}</div>
-            <div className="review-meta">
-              <span>Posted by {review.postedBy} </span>
-              <span>on {formatDate(review.createdAt)}</span>
-            </div>
-          </div>
-        </div>
+        <Accordion.Item key={index} eventKey={index.toString()}>
+          <Accordion.Header>
+            {getEmoji(review.emojiRating)} - Posted by {review.postedBy} on {formatDate(review.createdAt)}
+          </Accordion.Header>
+          <Accordion.Body>{review.comment}</Accordion.Body>
+        </Accordion.Item>
       ))}
-    </div>
+    </Accordion>
   );
 };
 

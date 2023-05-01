@@ -1,12 +1,12 @@
 a {
   text-decoration: none;
 }
-
 .containers {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+
 }
 
 .btn a{
@@ -17,6 +17,7 @@ a {
   flex: 1 1 60%;
   padding: 2% 10%;
   height: 100vh;
+  color: white;
 }
 
 .login-form .forms h1 {
@@ -41,7 +42,7 @@ a {
   flex: 1 1 40%;
   text-align: center;
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: #f2f2f2;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -64,6 +65,9 @@ a {
 html,
 body {
   height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #191a1a;
 
 }
 
@@ -104,9 +108,10 @@ form button {
 }
 
 .btn {
-  padding: 10px;
-
+  padding: 7px;
+background-color: orangered;
   border-radius: 6px;
+  border-color: orangered;
 }
 
 .logo-text {
@@ -116,7 +121,7 @@ form button {
 }
 
 .logo-text .back {
-  color: #464646;
+  color: white;
 }
 
 .back {
@@ -124,7 +129,7 @@ form button {
 }
 
 .logo-text:hover .back {
-  color: black;
+  color: orangered;
   transition: color 0.25s ease-in;
 }
 
@@ -141,7 +146,7 @@ form button {
   border-radius: 50px;
   height: 40px;
 }
-.container .secondrow{
+.contain .secondrow{
 padding-top: 3%;
 }
 .column {
@@ -156,7 +161,7 @@ padding-top: 3%;
 
 .card {
   
-  background-color: #f9f9f9;
+  background-color: transparent;
   border: none;
 
 }
@@ -182,7 +187,6 @@ padding-top: 3%;
     padding-right: 10px;
   }
 
-  .testimonial {}
 
   .row {
     flex-wrap: nowrap;
@@ -282,6 +286,7 @@ ul {
 }
 .color{
   padding: 15px;
+  background-color: orangered;
 }
 .partner-logo {
   display: flex;
@@ -309,7 +314,7 @@ ul {
 }
 /* searchpage.css */
 .navbar .container .btn{
-padding: revert;
+
 }
 .card-deck {
   display: flex;
@@ -320,9 +325,6 @@ padding: revert;
   padding-left: 2%;
   padding-right: 2%;
   
-}
-.container{
-  padding: 0;
 }
 .card-deck .card {
   width: calc(33.33% - 10px);
@@ -337,7 +339,7 @@ padding: revert;
 
 .card-img-top {
   object-fit: cover;
-  
+  height: 45vh;
   border-radius: 10px;
 }
 @media (max-width:450px) {
@@ -392,13 +394,7 @@ padding: revert;
   position: relative;
 }
 
-.card-image img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  border-radius: 20px;
-  padding: 10px;
-}
+
 
 .card-content {
   flex: 1;
@@ -456,10 +452,16 @@ padding: revert;
 }
 
 .search-btn {
-  background-color: black;
+  background-color: orangered;
   color: white;
   margin-left: 0.5rem; /* Add space between clear button and search button */
   width: fit-content;
+  border-color: orangered;
+}
+.search-btn:hover{
+  background-color: orangered;
+  color: white;
+  border-color: orangered;
 }
 .scroll{
   overflow-y: auto;
@@ -547,7 +549,7 @@ padding: revert;
 /*load button*/
 /* loadingSpinner.css */
 .load-more-btn {
-  background-color: #000;
+  background-color: orangered;
   color: #FFF;
   border: none;
   border-radius: 3px;
@@ -571,9 +573,10 @@ padding: revert;
 }
 .search-container .card {
   margin-bottom: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid black;
   border-radius: 4px;
   overflow: hidden;
+  
 }
 
 .card .row.no-gutters {
@@ -592,7 +595,6 @@ padding: revert;
   flex-direction: column;
   justify-content: space-between;
 }
-
 .card .card-image {
   height: 100%;
   position: relative;
@@ -712,8 +714,6 @@ padding: revert;
     margin-right: 0;
     margin-bottom: 1rem;
     height: 40%;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
     order: 3;
   }
 
@@ -789,9 +789,9 @@ padding: revert;
 /*campground details*/
 /* CampgroundDetails.module.css */
 
-.container .row .col h1{
-  margin-bottom: 20px;
-  text-align: left;
+.contain .row .col h1{
+  padding-bottom: 20px;
+  color: white;
 }
 
 .imageContainer {
@@ -840,30 +840,68 @@ padding: revert;
 .review-display {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  align-items: stretch;
+  padding-top: 15px;
 }
 
 .review {
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
   align-items: center;
-  padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 100%;
 }
 
 .emoji {
   font-size: 2rem;
+  margin-bottom: 10px;
 }
 
 .comment {
-  flex-grow: 1;
+  text-align: center;
 }
 
 .review-meta {
-  display: flex;
-  gap: 0.5rem;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #777;
-  margin-top: 0.5rem;
+  margin-top: 10px;
+}
+/*reviews display*/
+.accordion{
+  padding: 20px 0;
+}
+/* campground details description*/
+.description{
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  padding: 2% 3% ;
+}
+.reviewheading {
+  color: white;
+  padding-top: 20px;
+}
+@media (max-width: 767px) {
+ 
+
+  .row {
+    /* Styles for each row on mobile screens */
+    
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .col {
+    /* Styles for each column on mobile screens */
+  padding: 0;
+
+  }
+}
+
+
+.row>*{
+  padding: 0;
 }

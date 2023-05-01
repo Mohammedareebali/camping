@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import {  useNavigate, useParams } from "react-router-dom";
+import {  useNavigate, useParams,Link } from "react-router-dom";
 import { Card, Container, Row, Col, Button } from "react-bootstrap";
 import Map, { Marker } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import ReviewPopup from "./ReviewPopup.js";
 import ReviewDisplay from './ReviewDisplay.js';
+import NavComponent from "components/Nav.js";
 
 
 interface Props{
@@ -27,7 +28,7 @@ interface Campground {
 const CampgroundDetails: React.FC<Props> = ({token}) => {
   const { campgroundId } = useParams();
   const selectedCampgroundId = campgroundId;
-
+  const [loggedIn, setLoggedIn] = useState<boolean>(localStorage.getItem('isAuthenticated') === 'true');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [campground, setCampground] = useState<Campground | null>(null);
@@ -110,31 +111,37 @@ const handleSaveReview = async (review: string, emojiRating: number) => {
   }
 
   return (
-    <Container>
-      <Row>
+    <>
+    <NavComponent loggedIn={loggedIn} /> {/* Add Nav component */}
+      <Container className="contain">
+        <Row>
+          <Col>
+            <Link to="/search" >
+            <p className='back'><i className="fas fa-arrow-left"></i> Back to search results</p>
+            </Link>
+          </Col>
+        </Row>
+        
+        <Row>
+          <Col>
+            <Card key={campground._id}>
+              <Card.Img variant="top" src={campground.imageUrl} />
+            </Card>
+          </Col>
+        </Row>
+        <Row>
         <Col>
-        <h1>{campground.name}</h1>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Card key={campground._id}>
-            <Card.Img variant="top" src={campground.imageUrl} />
-          </Card>
-        </Col>
-      </Row>
-      <Row className="secondrow">
-       
-        <Col md={6}>
-          <Card>
-            <Card.Body>
-              
-              <Card.Text>{campground.description}</Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col md={6}>
-          <div style={{ width: "100%", height: "400px" }}>
+            <h1>{campground.name}</h1>
+          </Col>
+        </Row>
+        <Row className="description">
+          <Col md={6}>
+            <h2>Description</h2>
+            <p>{campground.description}</p>
+          </Col>
+          <Col md={6}>
+            <h2>Location</h2>
+            <div style={{ width: "100%", height: "400px" }}>
             <Map
               {...viewport}
               style={{ width: "100%", height: "100%" }}
@@ -152,25 +159,29 @@ const handleSaveReview = async (review: string, emojiRating: number) => {
                 />
               ) : null}
             </Map>
-          </div>
-        </Col>
-      </Row>
-      <Row>
-        <Col><ReviewDisplay reviews={reviews} /></Col>
-      </Row>
-      <Row>
-        <Col>
-          <Button onClick={() => setShowReviewPopup(true)}>Add Review</Button>
-          <ReviewPopup
-            show={showReviewPopup}
-            handleClose={() => setShowReviewPopup(false)}
-            handleSave={handleSaveReview}
-            
-          />
-          {/* Display reviews here */}
-        </Col>
-      </Row>
-    </Container>
+            </div>
+            <h2>Price per night</h2>
+            <p>${campground.price}</p>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <h2 className="reviewheading">Reviews</h2>
+            <ReviewDisplay reviews={reviews} />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Button onClick={() => setShowReviewPopup(true)}>Add Review</Button>
+            <ReviewPopup
+              show={showReviewPopup}
+              handleClose={() => setShowReviewPopup(false)}
+              handleSave={handleSaveReview}
+            />
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 };
 

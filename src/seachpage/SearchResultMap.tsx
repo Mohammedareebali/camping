@@ -63,7 +63,8 @@ console.log('hi')
         {...viewport}
         ref={mapRef}
         style={{ width: '100%', height: '100%' }}
-        mapStyle="mapbox://styles/mapbox/light-v11"
+        mapStyle="mapbox://styles/mapbox/dark-v10"
+
         onMove={evt => setViewport(evt.viewState)}
         mapboxAccessToken={'pk.eyJ1IjoibW9oYW1tZWQtYXJlZWIiLCJhIjoiY2t6ZDdpcG1rMDQyODJwcGMwOGZvZDVveCJ9.VtXqwPfArJoSqOLzFAfu1g' || ''}
       >
@@ -76,7 +77,7 @@ console.log('hi')
             longitude={camp.coordinates[0]}
           >
           
-              <FaMapMarkerAlt size={30} color={'#3f51b5'}  onClick={(e: { preventDefault: () => void; }) => {
+              <FaMapMarkerAlt size={30} color={'orangered'}  onClick={(e: { preventDefault: () => void; }) => {
                 e.preventDefault();
                 setSelectedCamp(camp);}}/>
           

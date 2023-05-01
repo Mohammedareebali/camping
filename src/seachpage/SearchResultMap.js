@@ -49,7 +49,7 @@ const Maps = ({ campgrounds }) => {
             latitudeNE: bounds.getNorthEast().lat,
         };
     };
-    return (_jsxs(ReactMapGL, { ...viewport, ref: mapRef, style: { width: '100%', height: '100%' }, mapStyle: "mapbox://styles/mapbox/light-v11", onMove: evt => setViewport(evt.viewState), mapboxAccessToken: 'pk.eyJ1IjoibW9oYW1tZWQtYXJlZWIiLCJhIjoiY2t6ZDdpcG1rMDQyODJwcGMwOGZvZDVveCJ9.VtXqwPfArJoSqOLzFAfu1g' || '', children: [campgrounds.map((camp, index) => (_jsx(Marker, { latitude: camp.coordinates[1], longitude: camp.coordinates[0], children: _jsx(FaMapMarkerAlt, { size: 30, color: '#3f51b5', onClick: (e) => {
+    return (_jsxs(ReactMapGL, { ...viewport, ref: mapRef, style: { width: '100%', height: '100%' }, mapStyle: "mapbox://styles/mapbox/dark-v10", onMove: evt => setViewport(evt.viewState), mapboxAccessToken: 'pk.eyJ1IjoibW9oYW1tZWQtYXJlZWIiLCJhIjoiY2t6ZDdpcG1rMDQyODJwcGMwOGZvZDVveCJ9.VtXqwPfArJoSqOLzFAfu1g' || '', children: [campgrounds.map((camp, index) => (_jsx(Marker, { latitude: camp.coordinates[1], longitude: camp.coordinates[0], children: _jsx(FaMapMarkerAlt, { size: 30, color: 'orangered', onClick: (e) => {
                         e.preventDefault();
                         setSelectedCamp(camp);
                     } }) }, `${camp._id}-${index}`))), selectedCamp && (_jsx(Popup, { latitude: selectedCamp.coordinates[1], longitude: selectedCamp.coordinates[0], onClose: () => {
