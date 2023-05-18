@@ -1,6 +1,7 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useState, useEffect, useRef } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
+import { Link } from 'react-router-dom';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import mapboxgl from 'mapbox-gl';
 const Maps = ({ campgrounds }) => {
@@ -50,11 +51,11 @@ const Maps = ({ campgrounds }) => {
         };
     };
     return (_jsxs(ReactMapGL, { ...viewport, ref: mapRef, style: { width: '100%', height: '100%' }, mapStyle: "mapbox://styles/mapbox/dark-v10", onMove: evt => setViewport(evt.viewState), mapboxAccessToken: 'pk.eyJ1IjoibW9oYW1tZWQtYXJlZWIiLCJhIjoiY2t6ZDdpcG1rMDQyODJwcGMwOGZvZDVveCJ9.VtXqwPfArJoSqOLzFAfu1g' || '', children: [campgrounds.map((camp, index) => (_jsx(Marker, { latitude: camp.coordinates[1], longitude: camp.coordinates[0], children: _jsx(FaMapMarkerAlt, { size: 30, color: 'orangered', onClick: (e) => {
-                        e.preventDefault();
+                        e.stopPropagation(); // Prevent the click event from propagating up
                         setSelectedCamp(camp);
-                    } }) }, `${camp._id}-${index}`))), selectedCamp && (_jsx(Popup, { latitude: selectedCamp.coordinates[1], longitude: selectedCamp.coordinates[0], onClose: () => {
+                    } }) }, `${camp._id}-${index}`))), console.log(selectedCamp), selectedCamp && (_jsx(Popup, { latitude: selectedCamp.coordinates[1], longitude: selectedCamp.coordinates[0], onClose: () => {
                     setSelectedCamp(null);
-                }, children: _jsxs("div", { children: [_jsx("h2", { children: selectedCamp.title }), _jsx("p", { children: selectedCamp.description })] }) }))] }));
+                }, children: _jsxs("div", { children: [_jsx(Link, { to: `/campgrounds/${selectedCamp._id}`, style: { color: 'black' }, children: _jsx("h3", { children: selectedCamp.name }) }), _jsxs("p", { children: [selectedCamp.price, " per night"] })] }) }))] }));
 };
 export default Maps;
 //# sourceMappingURL=SearchResultMap.js.map

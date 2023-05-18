@@ -36,7 +36,7 @@ const NavComponent: React.FC<Props> = ({loggedIn}) => {
     <Navbar bg="#191a1a" variant="dark" expand="lg">
     <Container>
       <Navbar.Brand>
-        <Link to="/" className="navbar-brand">
+        <Link to="/main" className="navbar-brand">
           <span>
             <img src={img} alt="this" />
             YelpCamp

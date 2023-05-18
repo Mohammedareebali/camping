@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { FaMapMarkerAlt, FaHouseUser, FaWifi } from "react-icons/fa";
 const PreviewCampground = ({ name, location, description, bed, price, wifi, image, }) => {
     const [imageUrl, setImageUrl] = React.useState('');
     React.useEffect(() => {
@@ -15,7 +15,7 @@ const PreviewCampground = ({ name, location, description, bed, price, wifi, imag
             setImageUrl('');
         }
     }, [image]);
-    return (_jsxs(Card, { className: "bg-dark text-white mt-3", children: [imageUrl && _jsx(Card.Img, { variant: "top", src: imageUrl }), _jsxs(Card.Body, { children: [_jsx(Card.Title, { children: name || 'Campground Name' }), _jsx(Card.Text, { children: description || 'Campground Description' }), _jsxs(Card.Text, { children: ["Location: ", location || 'Campground Location'] }), _jsxs(Card.Text, { children: ["Bed: ", bed || 'Number of Beds'] }), _jsxs(Card.Text, { children: ["Price: ", price || 'Campground Price'] }), _jsxs(Card.Text, { children: ["Wifi: ", wifi === 'true' ? 'Yes' : 'No'] })] })] }));
+    return (_jsx("div", { className: "cards-container", children: _jsxs("div", { className: "card", children: [_jsx("div", { className: "card-image", children: _jsx("img", { src: imageUrl, alt: "Campground" }) }), _jsxs("div", { className: "card-content", children: [_jsx("h3", { className: "card-title", children: name }), _jsx("p", { className: "card-text", children: description }), _jsx("div", { className: "reviews", children: "10 Reviews" }), _jsxs("div", { className: "card-info-container", children: [_jsxs("div", { className: "card-info", children: [_jsxs("div", { className: "location", children: [_jsx(FaMapMarkerAlt, { size: 15, color: "grey" }), location] }), _jsxs("div", { className: "bed", children: [_jsx(FaHouseUser, { size: 15, color: "grey" }), bed, " Bed(s)"] }), _jsxs("div", { className: "wifi", children: [wifi && _jsx(FaWifi, { size: 15, color: "grey" }), wifi ? "Wifi" : "No Wifi"] })] }), _jsxs("div", { className: "price-tag", children: ["$", price] })] })] })] }) }));
 };
 export default PreviewCampground;
 //# sourceMappingURL=PreviewCampground.js.map

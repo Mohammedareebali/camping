@@ -15,10 +15,13 @@ export default function Searchpage() {
         const fetchCampgrounds = async () => {
             try {
                 const url = searchQuery
-                    ? `/search?q=${searchQuery}&page=${currentPage}`
-                    : `/campgrounds?page=${currentPage}`;
-                const response = await fetch(url);
+                    ? `/api/search?q=${searchQuery}&page=${currentPage}`
+                    : `/api/campgrounds?page=${currentPage}`;
+                const response = await fetch(url, {
+                    headers: { 'Accept': 'application/json' },
+                });
                 const data = await response.json();
+                console.log('Response:', response);
                 // Check if there are more results
                 console.log(data);
                 if (data.current == data.pages) {
@@ -45,11 +48,15 @@ export default function Searchpage() {
         setCurrentPage(1); // Reset the current page to 1
         setCampgrounds([]); // Clear the campgrounds state
         try {
-            const response = await fetch(`/search?q=${query}&page=1`, {
+            const response = await fetch(`/api/search?q=${query}&page=1`, {
                 method: 'GET',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
             });
             const data = await response.json();
+            console.log('Response:', response);
             console.log(data);
             if (data.campgrounds.length === 0) {
                 setNoResultsMessage('No results found for your search query.');

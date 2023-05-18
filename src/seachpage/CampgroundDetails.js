@@ -26,7 +26,7 @@ const CampgroundDetails = ({ token }) => {
     // CampgroundDetails.tsx
     const handleSaveReview = async (review, emojiRating) => {
         try {
-            const response = await fetch('/review', {
+            const response = await fetch('/api/review', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ const CampgroundDetails = ({ token }) => {
         const fetchData = async () => {
             try {
                 // fetch campground details
-                const response = await fetch(`/campgrounds/${selectedCampgroundId}`);
+                const response = await fetch(`/api/campgrounds/${selectedCampgroundId}`);
                 const data = await response.json();
                 setCampground(data);
                 setLoading(false);
@@ -65,7 +65,7 @@ const CampgroundDetails = ({ token }) => {
                     zoom: 10,
                 });
                 // Fetch reviews
-                const reviewsResponse = await fetch(`/campgrounds/${selectedCampgroundId}/reviews`);
+                const reviewsResponse = await fetch(`/api/campgrounds/${selectedCampgroundId}/reviews`);
                 const reviewsData = await reviewsResponse.json();
                 setReviews(reviewsData);
             }

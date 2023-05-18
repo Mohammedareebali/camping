@@ -380,7 +380,6 @@ ul {
   border: 1px solid #ddd;
   border-radius: 4px;
   width: 100%;
-  max-width: 700px;
   margin-bottom: 1rem;
   background-color: white;
   padding-left: 0;
@@ -571,7 +570,7 @@ ul {
   cursor: not-allowed;
   box-shadow: none;
 }
-.search-container .card {
+.search-container .card , .cards-container .card {
   margin-bottom: 20px;
   border: 1px solid black;
   border-radius: 4px;
@@ -622,6 +621,7 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  color: #000;
 }
 
 .card .card-title {
@@ -703,7 +703,7 @@ ul {
 .p-4 {
   height: 15%;
 }
-@media (max-width: 540px) {
+@media (max-width: 700px) {
   .search-container {
     flex-direction: column;
     height: 100%;
@@ -785,6 +785,7 @@ ul {
   display: flex;
     justify-content: center;
     align-items: center;
+    color: black;
 }
 /*campground details*/
 /* CampgroundDetails.module.css */
@@ -903,5 +904,32 @@ ul {
 
 
 .row>*{
+  padding: 0;
+}
+/*new camp*/
+/* Set the active step text color to white */
+.custom-stepper .react-stepper-horizontal .react-stepper-horizontal-btn.active {
+  color: white;
+}
+
+/* Make the steps section width the same as the form section width */
+.stepgroup{
+  max-width: 600px;
+    margin: 0 auto;
+}
+.btn{
+  max-width: fit-content;
+}
+.btn:disabled{
+  background-color: #6c757d;
+}
+.btn:hover{
+  background-color: rgb(255, 0, 0);
+}
+/*new camp*/
+.stepgroup .card{
+  padding: 0;
+}
+.stepgroup .card .card-image ,.stepgroup .card .card-info-container{
   padding: 0;
 }

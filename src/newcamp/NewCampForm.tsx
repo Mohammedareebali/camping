@@ -62,6 +62,7 @@ const handleSubmit = async () => {
     <form onSubmit={handleSubmit} className={`bg-dark text-white p-3 add`}>
   <h2 className="text-center">Add New Camp</h2>
   <Stepper activeStep={step} steps={steps} />
+  <div className='stepgroup'>
   {step === 0 && (
     <>
       {/* Basic Info */}
@@ -96,7 +97,6 @@ const handleSubmit = async () => {
       </div>
     </>
   )}
-
   {step === 1 && (
     <>
       {/* Amenities */}
@@ -196,6 +196,7 @@ const handleSubmit = async () => {
       >
         {step === steps.length - 1 ? 'Submit' : 'Next'}
       </button>
+      </div>
       </div>
       </form>
       

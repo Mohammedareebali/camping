@@ -46,7 +46,7 @@ const [reviews, setReviews] = useState([]);
 const handleSaveReview = async (review: string, emojiRating: number) => {
   try {
     
-    const response = await fetch('/review', {
+    const response = await fetch('/api/review', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ const handleSaveReview = async (review: string, emojiRating: number) => {
     const fetchData = async () => {
       try {
         // fetch campground details
-        const response = await fetch(`/campgrounds/${selectedCampgroundId}`);
+        const response = await fetch(`/api/campgrounds/${selectedCampgroundId}`);
         const data = await response.json();
         setCampground(data);
         setLoading(false);
@@ -89,7 +89,7 @@ const handleSaveReview = async (review: string, emojiRating: number) => {
           zoom: 10,
         });
         // Fetch reviews
-      const reviewsResponse = await fetch(`/campgrounds/${selectedCampgroundId}/reviews`);
+      const reviewsResponse = await fetch(`/api/campgrounds/${selectedCampgroundId}/reviews`);
       const reviewsData = await reviewsResponse.json();
       setReviews(reviewsData);
 

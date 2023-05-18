@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
+import { FaMapMarkerAlt, FaHouseUser, FaWifi } from "react-icons/fa";
 
 interface PreviewProps {
   name: string;
@@ -35,17 +36,37 @@ const PreviewCampground: React.FC<PreviewProps> = ({
   }, [image]);
 
   return (
-    <Card className="bg-dark text-white mt-3">
-      {imageUrl && <Card.Img variant="top" src={imageUrl} />}
-      <Card.Body>
-        <Card.Title>{name || 'Campground Name'}</Card.Title>
-        <Card.Text>{description || 'Campground Description'}</Card.Text>
-        <Card.Text>Location: {location || 'Campground Location'}</Card.Text>
-        <Card.Text>Bed: {bed || 'Number of Beds'}</Card.Text>
-        <Card.Text>Price: {price || 'Campground Price'}</Card.Text>
-        <Card.Text>Wifi: {wifi === 'true' ? 'Yes' : 'No'}</Card.Text>
-      </Card.Body>
-    </Card>
+    <div className="cards-container">
+    <div
+    className="card"
+  >
+    <div className="card-image">
+      <img src={imageUrl} alt="Campground" />
+    </div>
+    <div className="card-content">
+      <h3 className="card-title">{name}</h3>
+      <p className="card-text">{description}</p>
+      <div className="reviews">10 Reviews</div>
+      <div className="card-info-container">
+        <div className="card-info">
+          <div className="location">
+            <FaMapMarkerAlt size={15} color="grey" />
+            {location}
+          </div>
+          <div className="bed">
+            <FaHouseUser size={15} color="grey" />
+            {bed} Bed(s)
+          </div>
+          <div className="wifi">
+            {wifi && <FaWifi size={15} color="grey" />}
+            {wifi ? "Wifi" : "No Wifi"}
+          </div>
+        </div>
+        <div className="price-tag">${price}</div>
+      </div>
+    </div>
+  </div>
+  </div>
   );
 };
 

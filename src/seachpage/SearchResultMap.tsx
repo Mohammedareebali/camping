@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
+import { Link } from 'react-router-dom';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import mapboxgl from 'mapbox-gl';
 
@@ -69,20 +70,25 @@ console.log('hi')
         mapboxAccessToken={'pk.eyJ1IjoibW9oYW1tZWQtYXJlZWIiLCJhIjoiY2t6ZDdpcG1rMDQyODJwcGMwOGZvZDVveCJ9.VtXqwPfArJoSqOLzFAfu1g' || ''}
       >
         
-        {campgrounds.map((camp,index) => (
-          <Marker
-          key={`${camp._id}-${index}`} // Append index to the key
+        {campgrounds.map((camp, index) => (
+    <Marker
+        key={`${camp._id}-${index}`} 
+        latitude={camp.coordinates[1]}
+        longitude={camp.coordinates[0]}
+    >
+        <FaMapMarkerAlt 
+            size={30} 
+            color={'orangered'} 
+            onClick={(e) => {
+                e.stopPropagation();  // Prevent the click event from propagating up
+                setSelectedCamp(camp);
+            }}
+        />
+    </Marker>
+))}
 
-            latitude={camp.coordinates[1]}
-            longitude={camp.coordinates[0]}
-          >
-          
-              <FaMapMarkerAlt size={30} color={'orangered'}  onClick={(e: { preventDefault: () => void; }) => {
-                e.preventDefault();
-                setSelectedCamp(camp);}}/>
-          
-          </Marker>
-        ))}
+
+{console.log(selectedCamp)}
         {selectedCamp && (
           <Popup
             latitude={selectedCamp.coordinates[1]}
@@ -92,8 +98,10 @@ console.log('hi')
             }}
           >
             <div>
-              <h2>{selectedCamp.title}</h2>
-              <p>{selectedCamp.description}</p>
+            <Link to={`/campgrounds/${selectedCamp._id}`} style={{color:'black'}}>
+          <h3>{selectedCamp.name}</h3>
+        </Link>
+        <p>{selectedCamp.price} per night</p>
             </div>
           </Popup>
         )}
