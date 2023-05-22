@@ -606,7 +606,9 @@ ul {
 }
 
 .card .price-tag {
-  position: absolute;
+  display: flex;
+    align-items: flex-end;
+    height: min-content;
   right: 10px;
   background-color: #fff;
   padding: 0px 10px;
@@ -699,6 +701,7 @@ ul {
 .card-info-container{
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
 }
 .p-4 {
   height: 15%;
