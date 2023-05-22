@@ -39,9 +39,6 @@ a {
 }
 
 .testimonial {
-  flex: 1 1 40%;
-  height: 100vh;
-
 }
 
 .testimonial h3 {
@@ -66,7 +63,7 @@ body {
 }
 
 .containers {
-height: 100vh;
+  min-height: 100vh;
   box-sizing: border-box;
 
 }
@@ -271,8 +268,7 @@ display: none;
 
   .mainlogin {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    
   }
 
 }
