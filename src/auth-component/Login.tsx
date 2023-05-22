@@ -3,6 +3,7 @@ import { useNavigate,Link } from 'react-router-dom';
 import { Form, Button, Alert,Card,Row,Col } from 'react-bootstrap';
 import '../auth-css/login.css';
 const img = require('../pics/icon-small.png');
+const campimg = require('../pics/heroimage.jpg')
 const authorImg = require('../pics/a.png');
 interface Props {
   setToken: (token: string) => void;

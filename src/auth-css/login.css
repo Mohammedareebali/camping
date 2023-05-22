@@ -40,13 +40,7 @@ a {
 
 .testimonial {
   flex: 1 1 40%;
-  text-align: center;
-  padding: 20px;
-  background-color: #f2f2f2;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 
 }
 
@@ -234,19 +228,32 @@ padding-top: 3%;
 
 /*landing page*/
 .campImg {
-  background-image: url('../pics/heroimage.jpg');
+  
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 }
-
+.imgt{
+  display: none;
+}
+.imgd{
+width: 100%;
+height: 100%;
+}
 @media (max-width:930px) {
   .campImg {
-    background-image: url('../pics/heroiamgeT.jpg');
     width: 100%;
+    height: 300px;
     justify-content: center;
   }
-
+  .imgt{
+    display: block;
+    width: 100vw;
+  
+  }
+.imgd{
+display: none;
+}
   .mainContainer {
     flex-direction: column-reverse;
     height: fit-content !important;

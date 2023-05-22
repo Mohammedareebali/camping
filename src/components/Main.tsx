@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 
 const img = require('../pics/icon-small.png');
+const campimage = require('../pics/heroimage.jpg');
+const campimageT = require('../pics/heroiamgeT.jpg')
 const checkmark = require('../pics/checkmark.svg').default;
 const booking = require('../pics/Booking.svg').default;
 const airbnb = require('../pics/Airbnb.svg').default;
@@ -50,7 +52,9 @@ export default function Main() {
         </div>
       </section>
       
-      <section className="testimonial campImg">
+      <section className="testimonial ">
+      <img src={campimageT} alt = 'this' className='imgt'></img>
+      <img src={campimage} alt = 'this' className='imgd'></img>
       </section>
       
       <section className='logo-text n'>
