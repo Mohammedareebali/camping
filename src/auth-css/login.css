@@ -936,3 +936,6 @@ ul {
 .stepgroup .card .card-image ,.stepgroup .card .card-info-container{
   padding: 0;
 }
+.stepgroup div{
+  padding: 0;
+}
