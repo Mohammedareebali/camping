@@ -67,7 +67,7 @@ const navigate = useNavigate();
           
           <Route path="/signup" element={<SignUp setToken={setToken} />} />
         <Route path="/login" element={<Login setToken={setToken} />} />
-        <Route path="/main" element = {<Main/>}/>
+        <Route path="/" element = {<Main/>}/>
         <Route path='/search/*' element = {<Searchpage/>}/>
         <Route path="/campgrounds/:campgroundId" element={<CampgroundDetails token = {token}/>} />
 

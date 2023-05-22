@@ -48,7 +48,7 @@ const navigate = useNavigate();
       <section className="login-form">
         <div className='logo-text'>
          <p><b> <img src={img} alt = 'this'></img>yelpCamp</b></p>
-         <Link to="/main">
+         <Link to="/">
          <p className='back'><i className="fas fa-arrow-left"></i> Back</p>
           </Link> 
           </div>

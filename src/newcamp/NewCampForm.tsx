@@ -3,12 +3,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Stepper from "react-stepper-horizontal";
 import { useNavigate} from 'react-router-dom';
 import PreviewCampground from './PreviewCampground';
+import NavComponent from 'components/Nav';
 
 interface Props {
   token : string | null
 }
 const NewCampForm: React.FC<Props> = ({token}) => {
   const [name, setName] = useState<string >('');
+  const [loggedIn, setLoggedIn] = useState<boolean>(localStorage.getItem('isAuthenticated') === 'true');
   const [location, setLocation] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [bed, setBed] = useState<string | number>('');
@@ -59,6 +61,7 @@ const handleSubmit = async () => {
 
   return (
     <>
+    <NavComponent loggedIn={loggedIn}/>
     <form onSubmit={handleSubmit} className={`bg-dark text-white p-3 add`}>
   <h2 className="text-center">Add New Camp</h2>
   <Stepper activeStep={step} steps={steps} />
