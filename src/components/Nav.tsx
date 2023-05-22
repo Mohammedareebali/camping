@@ -6,10 +6,11 @@ interface Props{
   loggedIn:Boolean,
 }
 const NavComponent: React.FC<Props> = ({loggedIn}) => {
+  const backendUrl = 'https://yelcamp-backend.herokuapp.com';
   const handleLogout = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('/logout', {
+      const response = await fetch(`${backendUrl}/api/logout`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

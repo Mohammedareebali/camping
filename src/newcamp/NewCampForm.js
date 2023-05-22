@@ -21,6 +21,7 @@ const NewCampForm = ({ token }) => {
     ];
     // calling out use navigate
     const navigate = useNavigate();
+    const backendUrl = 'https://yelcamp-backend.herokuapp.com';
     const handleSubmit = async () => {
         const formData = new FormData();
         formData.append('file', image);
@@ -31,7 +32,7 @@ const NewCampForm = ({ token }) => {
         formData.append('price', Number(price).toString());
         formData.append('wifi', wifi.toString());
         try {
-            const res = await fetch('/camps', {
+            const res = await fetch(`${backendUrl}/camps`, {
                 method: 'POST',
                 headers: {
                     Authorization: `Bearer ${token}`,

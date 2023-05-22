@@ -10,13 +10,14 @@ const SignUp = ({ setToken }) => {
     const [error, setError] = useState(null);
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState('');
+    const backendUrl = 'https://yelcamp-backend.herokuapp.com';
     const navigate = useNavigate();
     // Handle form submission
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
             // Send a POST request to the server to create a new user
-            const response = await fetch('/api/signup', {
+            const response = await fetch(`${backendUrl}/api/signup`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password, password2 }),

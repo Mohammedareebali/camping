@@ -3,10 +3,11 @@ import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 const img = require('../pics/icon-small.png');
 const NavComponent = ({ loggedIn }) => {
+    const backendUrl = 'https://yelcamp-backend.herokuapp.com';
     const handleLogout = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('/logout', {
+            const response = await fetch(`${backendUrl}/api/logout`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

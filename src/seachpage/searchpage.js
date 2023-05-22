@@ -11,12 +11,13 @@ export default function Searchpage() {
     const [noResultsMessage, setNoResultsMessage] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
     const [hasMore, setHasMore] = useState(true);
+    const backendUrl = 'https://yelcamp-backend.herokuapp.com';
     useEffect(() => {
         const fetchCampgrounds = async () => {
             try {
                 const url = searchQuery
-                    ? `/api/search?q=${searchQuery}&page=${currentPage}`
-                    : `/api/campgrounds?page=${currentPage}`;
+                    ? `${backendUrl}/api/search?q=${searchQuery}&page=${currentPage}`
+                    : `${backendUrl}/api/campgrounds?page=${currentPage}`;
                 const response = await fetch(url, {
                     headers: { 'Accept': 'application/json' },
                 });
@@ -48,7 +49,7 @@ export default function Searchpage() {
         setCurrentPage(1); // Reset the current page to 1
         setCampgrounds([]); // Clear the campgrounds state
         try {
-            const response = await fetch(`/api/search?q=${query}&page=1`, {
+            const response = await fetch(`${backendUrl}/api/search?q=${query}&page=1`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

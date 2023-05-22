@@ -24,9 +24,10 @@ const CampgroundDetails = ({ token }) => {
     const [showReviewPopup, setShowReviewPopup] = useState(false); // Add this state
     const navigate = useNavigate();
     // CampgroundDetails.tsx
+    const backendUrl = 'https://yelcamp-backend.herokuapp.com';
     const handleSaveReview = async (review, emojiRating) => {
         try {
-            const response = await fetch('/api/review', {
+            const response = await fetch(`${backendUrl}/api/review`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -55,7 +56,7 @@ const CampgroundDetails = ({ token }) => {
         const fetchData = async () => {
             try {
                 // fetch campground details
-                const response = await fetch(`/api/campgrounds/${selectedCampgroundId}`);
+                const response = await fetch(`${backendUrl}/api/campgrounds/${selectedCampgroundId}`);
                 const data = await response.json();
                 setCampground(data);
                 setLoading(false);
@@ -65,7 +66,7 @@ const CampgroundDetails = ({ token }) => {
                     zoom: 10,
                 });
                 // Fetch reviews
-                const reviewsResponse = await fetch(`/api/campgrounds/${selectedCampgroundId}/reviews`);
+                const reviewsResponse = await fetch(`${backendUrl}/api/campgrounds/${selectedCampgroundId}/reviews`);
                 const reviewsData = await reviewsResponse.json();
                 setReviews(reviewsData);
             }
