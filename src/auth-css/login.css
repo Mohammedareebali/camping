@@ -1035,6 +1035,7 @@ ul {
     display: flex;
     background-color: #000;
     color: white;
+    height: 100vh;
   }
   .logo-section2{
     display: none;
@@ -1042,6 +1043,8 @@ ul {
   .intro-title{
     padding: 20px 0 40px 0;
   }
+  
+  
   .partners-container{
     padding-top: 20px;
   }
@@ -1066,6 +1069,8 @@ ul {
 
   .camp-image-bottom {
     display: block;
+    width: 100%;
+    height: 100%;
   }
 
   .camp-image-top {
@@ -1089,6 +1094,9 @@ ul {
   }
   .intro-section .logo-container{
     display: none;
+  }
+  .intro-text-container div,p,h1{
+    padding-top: 3%;
   }
   .intro-section {
     width: 100%;
