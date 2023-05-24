@@ -39,6 +39,15 @@ a {
 }
 
 .testimonial {
+  flex: 1 1 40%;
+  text-align: center;
+  padding: 20px;
+  background-color: #f2f2f2;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
 }
 
 .testimonial h3 {
@@ -232,11 +241,15 @@ padding-top: 3%;
 }
 .imgt{
   display: none;
+  width: 100%;
+height: 100%;
 }
 .imgd{
 width: 100%;
 height: 100%;
 }
+
+
 @media (max-width:930px) {
   .campImg {
     width: 100%;
@@ -245,8 +258,6 @@ height: 100%;
   }
   .imgt{
     display: block;
-    width: 100vw;
-  
   }
 .imgd{
 display: none;
@@ -268,7 +279,8 @@ display: none;
 
   .mainlogin {
     display: flex;
-    
+    justify-content: center;
+    align-items: center;
   }
 
 }
@@ -982,4 +994,117 @@ ul {
 }
 .navbar .p-4{
   padding: 2.2rem!important;
+}
+/*image container insted of testimonial*/
+/* Common styles */
+.logo-image {
+  height: auto;
+}
+
+.view-button {
+  width: 200px;
+  height: 50px;
+  text-align: center;
+  background-color: orangered;
+  color: white;
+}
+
+.partner-logo {
+  width: 50px;
+  height: auto;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.partners {
+  display: flex;
+  justify-content: space-between;
+}
+.partner-logos-container{
+  display: flex;
+  justify-content: center;
+}
+.partners-container .partner-logo{
+  flex-grow: 1;
+  height: auto;
+  max-width: 30%;
+}
+/* Desktop styles */
+@media (min-width: 992px) {
+  .main-container {
+    display: flex;
+    background-color: #000;
+    color: white;
+  }
+  .logo-section2{
+    display: none;
+  }
+  .intro-title{
+    padding: 20px 0 40px 0;
+  }
+  .partners-container{
+    padding-top: 20px;
+  }
+  
+  .intro-section {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 60%;
+    padding: 20px;
+  }
+
+  .intro-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .images-section {
+    flex: 0 1 40%;
+  }
+
+  .camp-image-bottom {
+    display: block;
+  }
+
+  .camp-image-top {
+    display: none;
+  }
+
+  .logo-text.n {
+    display: none;
+  }
+}
+
+/* Mobile and Tablet styles */
+@media (max-width: 991px) {
+  .main-container {
+    display: flex;
+    background-color: #000;
+    color: white;
+    flex-direction: column-reverse;
+    height: 100vh;
+    justify-content: flex-end;
+  }
+  .intro-section .logo-container{
+    display: none;
+  }
+  .intro-section {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .images-section {
+    width: 100%;
+  }
+
+  .camp-image-bottom {
+    display: none;
+  }
+
+  .camp-image-top {
+    display: block;
+    width: 100%;
+  }
 }
