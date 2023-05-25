@@ -72,7 +72,7 @@ const navigate = useNavigate();
         <Route path='/search/*' element = {<Searchpage/>}/>
         <Route path="/campgrounds/:campgroundId" element={<CampgroundDetails token = {token}/>} />
 
-        <Route path='/createcamp' element = {<PrivateRoute>
+        <Route path='/dashboard' element = {<PrivateRoute>
             <Dashboard token = {token}/></PrivateRoute>}  />
           <Route path='/createcamp' element = {<PrivateRoute>
             <NewCampForm token = {token}/></PrivateRoute>}  />
