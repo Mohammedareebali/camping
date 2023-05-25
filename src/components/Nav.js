@@ -31,7 +31,7 @@ const NavComponent = ({ loggedIn }) => {
     };
     return (_jsx(Navbar, { bg: "#191a1a", variant: "dark", expand: "lg", children: _jsxs(Container, { children: [_jsx(Navbar.Brand, { children: _jsx(Link, { to: "/", className: "navbar-brand", children: _jsxs("span", { children: [_jsx("img", { src: img, alt: "this" }), "YelpCamp"] }) }) }), _jsx(Navbar.Toggle, { "aria-controls": "basic-navbar-nav" }), _jsxs(Navbar.Collapse, { id: "basic-navbar-nav", children: [_jsx(Nav, { className: "me-auto" }), _jsx(Nav, { children: loggedIn ? (
                             // Navigation items for logged-in users
-                            _jsxs(_Fragment, { children: [_jsx(Link, { to: "/profile", className: "nav-link", children: _jsx("span", { children: "Profile" }) }), _jsx(Button, { onClick: handleLogout, children: "Logout" })] })) : (
+                            _jsxs(_Fragment, { children: [_jsx(Link, { to: "/dashboard", className: "nav-link", children: _jsx("span", { children: "Dashboard" }) }), _jsx(Button, { onClick: handleLogout, children: "Logout" })] })) : (
                             // Navigation items for non-logged-in users
                             _jsxs(_Fragment, { children: [_jsx(Link, { to: "/login", className: "nav-link", children: _jsx("span", { children: "Login" }) }), _jsx(Link, { to: "/register", children: _jsx(Button, { variant: "dark", style: { color: "white" }, children: "Create New Account" }) })] })) })] })] }) }));
 };

@@ -51,8 +51,8 @@ const NavComponent: React.FC<Props> = ({loggedIn}) => {
           {loggedIn ? (
             // Navigation items for logged-in users
             <>
-              <Link to="/profile" className="nav-link">
-                <span>Profile</span>
+              <Link to="/dashboard" className="nav-link">
+                <span>Dashboard</span>
               </Link>
               <Button onClick={handleLogout}>Logout</Button>
             </>

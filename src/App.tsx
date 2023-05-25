@@ -9,6 +9,7 @@ import  Searchpage  from './seachpage/searchpage' ;
 import CampgroundDetails from './seachpage/CampgroundDetails';
 import NewCampForm from './newcamp/NewCampForm.js';
 import PrivateRoute from './privateroute/PrivateRoute';
+import Dashboard from 'dashboard/Dashboard';
 
 const App: React.FC = () => {
   // Define state variable for the JWT
@@ -71,7 +72,8 @@ const navigate = useNavigate();
         <Route path='/search/*' element = {<Searchpage/>}/>
         <Route path="/campgrounds/:campgroundId" element={<CampgroundDetails token = {token}/>} />
 
-
+        <Route path='/createcamp' element = {<PrivateRoute>
+            <Dashboard token = {token}/></PrivateRoute>}  />
           <Route path='/createcamp' element = {<PrivateRoute>
             <NewCampForm token = {token}/></PrivateRoute>}  />
       

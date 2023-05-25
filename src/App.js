@@ -9,6 +9,7 @@ import Searchpage from './seachpage/searchpage';
 import CampgroundDetails from './seachpage/CampgroundDetails';
 import NewCampForm from './newcamp/NewCampForm.js';
 import PrivateRoute from './privateroute/PrivateRoute';
+import Dashboard from 'dashboard/Dashboard';
 const App = () => {
     // Define state variable for the JWT
     // Retrieve the JWT from localStorage
@@ -56,7 +57,7 @@ const App = () => {
             navigate('/home');
         }
     }, [userId]);
-    return (_jsx(_Fragment, { children: _jsxs(Routes, { children: [_jsx(Route, { path: "/signup", element: _jsx(SignUp, { setToken: setToken }) }), _jsx(Route, { path: "/login", element: _jsx(Login, { setToken: setToken }) }), _jsx(Route, { path: "/", element: _jsx(Main, {}) }), _jsx(Route, { path: '/search/*', element: _jsx(Searchpage, {}) }), _jsx(Route, { path: "/campgrounds/:campgroundId", element: _jsx(CampgroundDetails, { token: token }) }), _jsx(Route, { path: '/createcamp', element: _jsx(PrivateRoute, { children: _jsx(NewCampForm, { token: token }) }) })] }) }));
+    return (_jsx(_Fragment, { children: _jsxs(Routes, { children: [_jsx(Route, { path: "/signup", element: _jsx(SignUp, { setToken: setToken }) }), _jsx(Route, { path: "/login", element: _jsx(Login, { setToken: setToken }) }), _jsx(Route, { path: "/", element: _jsx(Main, {}) }), _jsx(Route, { path: '/search/*', element: _jsx(Searchpage, {}) }), _jsx(Route, { path: "/campgrounds/:campgroundId", element: _jsx(CampgroundDetails, { token: token }) }), _jsx(Route, { path: '/createcamp', element: _jsx(PrivateRoute, { children: _jsx(Dashboard, { token: token }) }) }), _jsx(Route, { path: '/createcamp', element: _jsx(PrivateRoute, { children: _jsx(NewCampForm, { token: token }) }) })] }) }));
 };
 export default App;
 //# sourceMappingURL=App.js.map
