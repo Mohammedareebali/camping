@@ -1,4 +1,5 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+// Dashboard.tsx
 import { useEffect, useState } from 'react';
 import NewCampForm from "../newcamp/NewCampForm"; // import your CreateNewCamp component
 const Dashboard = ({ token }) => {
