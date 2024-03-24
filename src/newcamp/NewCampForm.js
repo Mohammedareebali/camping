@@ -23,11 +23,7 @@ const NewCampForm = ({ token }) => {
     ];
     // calling out use navigate
     const navigate = useNavigate();
-<<<<<<< HEAD
     const backendUrl = 'https://yelcamp-backend.herokuapp.com';
-=======
-    const backendUrl = 'https://localhost:5000';
->>>>>>> 1ebec6a (fix:setup with backend)
     const handleSubmit = async () => {
         const formData = new FormData();
         formData.append('file', image);

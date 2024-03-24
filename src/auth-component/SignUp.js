@@ -10,11 +10,7 @@ const SignUp = ({ setToken }) => {
     const [error, setError] = useState(null);
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState('');
-<<<<<<< HEAD
-    const backendUrl = 'https://yelcamp-backend.herokuapp.com';
-=======
     const backendUrl = 'https://localhost:5000';
->>>>>>> 1ebec6a (fix:setup with backend)
     const navigate = useNavigate();
     // Handle form submission
     const handleSubmit = async (event) => {
