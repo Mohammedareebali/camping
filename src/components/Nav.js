@@ -3,7 +3,11 @@ import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 const img = require('../pics/icon-small.png');
 const NavComponent = ({ loggedIn }) => {
+<<<<<<< HEAD
     const backendUrl = 'https://yelcamp-backend.herokuapp.com';
+=======
+    const backendUrl = 'https://localhost:5000';
+>>>>>>> 1ebec6a (fix:setup with backend)
     const handleLogout = async () => {
         try {
             const token = localStorage.getItem('token');

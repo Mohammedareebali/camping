@@ -14,7 +14,7 @@ const SignUp: React.FC<Props> = ({setToken}) => {
   const [error, setError] = useState<string | null>(null);
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
-  const backendUrl = 'https://yelcamp-backend.herokuapp.com';
+  const backendUrl = 'https://localhost:5000';
 const navigate = useNavigate();
   // Handle form submission
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
