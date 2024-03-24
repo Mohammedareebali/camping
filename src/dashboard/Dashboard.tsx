@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // Dashboard.tsx
 import React, { useEffect, useState } from 'react';
 import NewCampForm from "../newcamp/NewCampForm"; // import your CreateNewCamp component
@@ -59,15 +58,3 @@ const Dashboard: React.FC<Props> = ({token}) => {
 };
 
 export default Dashboard;
-=======
-import React from 'react'
-
-export default function Dashboard() {
-  return (
-    <div>
-      <div className='dashboardnav'></div>
-      <div className="dashboarddisplaybasedonnav"></div>
-    </div>
-  )
-}
->>>>>>> 1ebec6a (fix:setup with backend)
