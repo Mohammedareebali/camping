@@ -34,26 +34,10 @@ const Dashboard: React.FC<Props> = ({token}) => {
 
   return (
     <div className="dashboard">
-      <div className="profile-section">
-        <h2>Profile</h2>
-        {/* Display profile data here */}
-      </div>
-
-      <div className="posted-section">
-        <h2>Posted Items</h2>
-        {/* Display postedItems here */}
-      </div>
-
-      <div className="favorites-section">
-        <h2>Favorites</h2>
-        {/* Display favorites here */}
-      </div>
-
-      <div className="create-new-section">
-        <h2>Create New Camp</h2>
+      
         <NewCampForm token={token} />
       </div>
-    </div>
+    
   );
 };
 

@@ -11,7 +11,7 @@ const Login = ({ setToken }) => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
     const navigate = useNavigate();
-    const backendUrl = 'https://localhost:5000';
+    const backendUrl = 'http://localhost:5001';
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {

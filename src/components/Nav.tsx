@@ -6,7 +6,7 @@ interface Props{
   loggedIn:Boolean,
 }
 const NavComponent: React.FC<Props> = ({loggedIn}) => {
-  const backendUrl = 'https://localhost:5000';
+  const backendUrl = 'https://localhost:5001';
   const handleLogout = async () => {
     try {
       const token = localStorage.getItem('token');

@@ -8,12 +8,7 @@ export default function DashboardNav() {
           <p><b><img src={img} alt='YelpCamp logo' className='logo-image'/>yelpCamp</b></p>
         </div>
         <main>
-            <ul>
-                <li>profile</li>
-                <li>newcamp</li>
-                <li>favorites</li>
-
-            </ul>
+            
         </main>
         <footer>
             <p>logout</p>

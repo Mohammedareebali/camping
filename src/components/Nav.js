@@ -3,7 +3,7 @@ import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 const img = require('../pics/icon-small.png');
 const NavComponent = ({ loggedIn }) => {
-    const backendUrl = 'https://localhost:5000';
+    const backendUrl = 'https://localhost:5001';
     const handleLogout = async () => {
         try {
             const token = localStorage.getItem('token');
