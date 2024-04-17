@@ -21,6 +21,7 @@ export default function Searchpage() {
                     ? `${backUrl}/api/search?q=${searchQuery}&page=${currentPage}`
                     : `${backUrl}/api/campgrounds?page=${currentPage}`;
                 const response = await fetch(url, {
+                    method: 'GET',
                     headers: { 'Accept': 'application/json' },
                 });
                 const data = await response.json();
