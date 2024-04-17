@@ -21,10 +21,10 @@ export default function Searchpage() {
   const [noResultsMessage, setNoResultsMessage] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [hasMore, setHasMore] = useState(true);
-  const backUrl = 'https://localhost:5001';
+  const backUrl = 'http://localhost:5001';
   console.log(backUrl)
   useEffect(() => {
-    const backUrl = 'https://localhost:5001';
+    const backUrl = 'http://localhost:5001';
     const fetchCampgrounds = async () => {
       try {
         const url = searchQuery
